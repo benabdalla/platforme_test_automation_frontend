@@ -1,0 +1,92 @@
+<mat-toolbar class="toolbar-color py-4 mb-4">
+    <div fxFlex fxLayout fxLayoutAlign="space-around center">
+        <button mat-raised-button (click)="openDialog()">Ajouter scénario spécifique </button>
+        <button mat-raised-button (click)="openDialog2()">Ajouter scénario  génerique</button>
+    </div>
+  
+  </mat-toolbar><div class="example-header">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+  <div class="example-container mat-elevation-z8">
+    <mat-spinner *ngIf="isLoading" [diameter]="50" [color]="'primary'" [mode]="'indeterminate'"></mat-spinner>
+
+    <mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.numFiche}} </mat-cell>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="Responsable dechlencheur">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Responsable dechlencheur </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <ng-container *ngIf="row.dechlencheur?.name !== null">
+            {{row.respSuivi.name}}
+          </ng-container>
+          <ng-container *ngIf="row.dechlencheur?.name === null">
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+      
+      
+      <ng-container matColumnDef="Responsable traitement">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Responsable traitement </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <ng-container *ngIf="row.respTraitement?.name !== null">
+            {{row.respSuivi.name}}
+          </ng-container>
+          <ng-container *ngIf="row.respTraitement?.name === null">
+           
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+      
+
+      <ng-container matColumnDef="Responsable Côlture">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Responsable Côlture </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <ng-container *ngIf="row.respCloture?.name !== null">
+            {{row.respSuivi.name}}
+          </ng-container>
+          <ng-container *ngIf="row.respCloture?.name === null">
+
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="Responsable suivi">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Responsable suivi </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <ng-container *ngIf="row.respSuivi?.name !== null">
+            {{row.respSuivi.name}}
+          </ng-container>
+          <ng-container *ngIf="row.respSuivi?.name === null">
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+      <ng-container  matColumnDef="...">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
+    <button mat-raised-button id="idmat-success" (click)="runScenario(row.idScenario)">Exécuter</button>
+    <button mat-raised-button color="accent">Arrêter</button>
+    <mat-button-toggle-group #group="matButtonToggleGroup" id="#idButtoneys">
+      <mat-button-toggle value="raw_swift_msg" matTooltip="afficher plus" >
+        <i class="fa fa-eye" id="ideyes" style="color:#189cda" aria-hidden="true"></i>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>

@@ -1,0 +1,270 @@
+<div>
+  <div class="add-title">
+    <mat-toolbar class="toolbar-color py-4 mb-4">
+      <div fxFlex fxLayout fxLayoutAlign="space-around center">
+        <h3>Scénario module Action</h3>
+      </div>
+    </mat-toolbar>
+  </div>
+  <div>
+    <form [formGroup]="addCusForm" (change)="formChanged()">
+      <mat-grid-list cols="3" [cols]="3" rowHeight="95px" (window:resize)="onResize($event)">
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="small-form-field">
+              <textarea matInput placeholder="source d'action" formControlName="source" required></textarea>
+
+              <mat-error *ngIf="addCusForm.controls.source.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Type d'action" formControlName="type" required>
+              <mat-error *ngIf="addCusForm.controls.type.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Priorite" formControlName="priorite" required>
+              <mat-error *ngIf="addCusForm.controls.priorite.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="gravite" formControlName="gravite" required>
+              <mat-error *ngIf="addCusForm.controls.gravite.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Responsbale de traitment " formControlName="resptraitement" required>
+              <mat-error *ngIf="addCusForm.controls.resptraitement.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Responsable de clôture" formControlName="respcloture" required>
+              <mat-error *ngIf="addCusForm.controls.respcloture.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Responsable Suivi" formControlName="respSuivi" required>
+              <mat-error *ngIf="addCusForm.controls.respSuivi.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Type de cause" formControlName="type_cause" required>
+              <mat-error *ngIf="addCusForm.controls.type_cause.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Désignation" formControlName="designation" required>
+              <mat-error *ngIf="addCusForm.controls.designation.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Description" formControlName="description" required>
+              <mat-error *ngIf="addCusForm.controls.description.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Processus" formControlName="processus" required>
+              <mat-error *ngIf="addCusForm.controls.processus.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Activite " formControlName="activite" required>
+              <mat-error *ngIf="addCusForm.controls.activite.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Direction" formControlName="direction" required>
+              <mat-error *ngIf="addCusForm.controls.direction.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+
+
+
+
+
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Service" formControlName="service" required>
+        <mat-error *ngIf="addCusForm.controls.service.hasError('required')">
+          Champ obligatoire
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <textarea matInput placeholder="Désignation sous action" formControlName="Desi_SA"  required></textarea>
+        <mat-error *ngIf="addCusForm.controls.Desi_SA.hasError('required')">
+          Champ obligatoire
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Date réalisation" formControlName="date_realisation" >
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Date suivi" formControlName="date_suivi" >
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker3" placeholder="Date creation" formControlName="date_création" >
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Taux de réalisation" formControlName="taux_realisation" required type="number">
+        <mat-error *ngIf="addCusForm.controls.taux_realisation.hasError('required')">
+          Champ obligatoire
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Taux de suivi" formControlName="taux_suivi" required  type="number">
+        <mat-error *ngIf="addCusForm.controls.taux_suivi.hasError('required')">
+          Champ obligatoire
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Produit" formControlName="produit" required  type="number">
+        <mat-error *ngIf="addCusForm.controls.produit.hasError('required')">
+          Champ obligatoire
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Declencheur" formControlName="dechlencheur" required  type="number">
+        <mat-error *ngIf="addCusForm.controls.dechlencheur.hasError('required')">
+          Champ obligatoire
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+  </mat-grid-list>
+
+  <div class="btn-sec"fxLayoutAlign="space-around center">
+
+    <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="onAddCus()">
+      <mat-icon>add</mat-icon>
+      Ajouter
+    </button>
+    <button mat-raised-button type="button" color="warn" class="Discard-btn" (click)="openDialog()">
+      <mat-icon>cancel</mat-icon>
+      Annuler</button>
+  </div>
+
+  </form>
+</div>
+</div>

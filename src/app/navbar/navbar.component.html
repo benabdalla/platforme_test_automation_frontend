@@ -1,0 +1,40 @@
+<div fxLayout="column" fxFlexFill>
+    <mat-toolbar class="navbar-color mat-elevation-z4 p-3" fxLayout="row" fxLayoutAlign="start stretch"
+        style="z-index: 2">
+
+        <button mat-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <button mat-button routerLink="/" routerLinkActive="router-link-active">
+            <mat-icon>home</mat-icon>
+        </button>
+
+
+        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+            <button mat-button routerLink="/" routerLinkActive="router-link-active no-border">connexion</button>
+        </div>
+    </mat-toolbar>
+
+    <mat-drawer-container fxFlex autosize class="background">
+        <mat-drawer #drawer>
+            <div fxLayout="column">
+                <button mat-button routerLink="/action" routerLinkActive="selected no-border txt-bold"
+                    fxLayoutAlign="start" class="py-2 pr-5">
+                    <mat-icon class="mr-2">filter_1</mat-icon>action</button>
+                <mat-divider></mat-divider>
+                <button mat-button routerLink="/audit" routerLinkActive="selected no-border txt-bold"
+                    fxLayoutAlign="start" class="py-2 pr-5">
+                    <mat-icon class="mr-2">filter_2</mat-icon>audit</button>
+                <mat-divider></mat-divider>
+
+            </div>
+        </mat-drawer>
+
+        <!--PAGES-->
+        <div style="display: inline;">
+            <router-outlet></router-outlet>
+        </div>
+
+    </mat-drawer-container>
+</div>

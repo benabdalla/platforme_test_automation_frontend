@@ -1,0 +1,10 @@
+
+ /* custom-snackbar.css */
+.custom-snackbar {
+    background-color: #03e95b;/* Replace with your desired color */
+    color: white; /* Replace with the desired text color */
+  }
+  
+.size-col{
+    width: 80%;
+}

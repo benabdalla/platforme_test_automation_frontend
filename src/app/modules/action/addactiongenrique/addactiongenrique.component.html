@@ -1,0 +1,160 @@
+<div>
+  <div class="add-title">
+    <mat-toolbar class="toolbar-color py-4 mb-4">
+      <div fxFlex fxLayout fxLayoutAlign="space-around center">
+        <h3>Scénario module Action</h3>
+      </div>
+     
+    </mat-toolbar>
+  </div>
+  <div>
+
+    <form [formGroup]="fromScGenrique" (change)="formChanged()">
+      <mat-grid-list cols="4" [cols]="4" rowHeight="300px" (window:resize)="onResize($event)">
+        <mat-grid-tile>
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+
+          <div class="ng-autocomplete size-col">
+            <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Déchlencheur"
+              historyIdentifier="employees1" [itemTemplate]="itemTemplate1" [notFoundTemplate]="notFoundTemplate"
+              formControlName="declencheur">
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate1 let-item>
+              <div class="item">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                  height="35">
+                <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                <em>matriculer : {{item.idUser}}</em>
+
+              </div>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div class="text-inside">
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+          <div class="ng-autocomplete size-col">
+            <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="responsable de réalisation"
+              historyIdentifier="employees2" [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+              formControlName="respoReal">
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+              <div class="item">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                  height="35">
+                <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                <em>matriculer : {{item.idUser}}</em>
+
+              </div>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="text-inside">
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+          <div class="ng-autocomplete size-col">
+            <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="responsable de suivi"
+              historyIdentifier="employees3" [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+              formControlName="respoSuiv">
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+              <div class="item">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                  height="35">
+                <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                <em>matriculer : {{item.idUser}}</em>
+
+              </div>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div class="text-inside">
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+          <div class="ng-autocomplete size-col">
+            <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="responsable de clôture"
+              historyIdentifier="employees4" [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+              formControlName="respcloture">
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+              <div class="item">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                  height="35">
+                <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                <em>matriculer : {{item.idUser}}</em>
+
+              </div>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+
+        </mat-grid-tile>
+
+
+      </mat-grid-list>
+
+
+
+      <div class="btn-sec" fxLayoutAlign="space-around center">
+
+        <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="onAddScenario()">
+          <mat-icon>add</mat-icon>
+          Ajouter
+        </button>
+
+        
+
+        <button mat-raised-button mat-dialog-close type="button" color="warn" class="Discard-btn">
+          <mat-icon>cancel</mat-icon>
+          Annuler</button>
+        
+
+      </div>
+
+    </form>
+
+
+
+
+
+  </div>
+</div>

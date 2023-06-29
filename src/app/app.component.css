@@ -1,0 +1,8 @@
+.custom-snackbar {
+    background-color: #3faa68;/* Replace with your desired color */
+    color: white; /* Replace with the desired text color */
+  }
+  ::ng-deep .snack-style{
+    background-color:rgb(72, 236, 39);
+    color: rgb(82, 82, 82);
+}

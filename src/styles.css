@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+/* Add application styles & imports to this file! */
+/* Angular Material */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+
+html, body { 
+    height: 100%; 
+}
+body { 
+
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.navbar-color {background-color: hsl(206, 67%, 48%); color: white;}
+.router-link-active {background-color: hsl(206, 67%, 48%);}
+.no-border {border-radius: 0px;}
+
+.toolbar-color {background-color: rgb(29, 94, 144); color: white;}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.v-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.txt-bold {font-weight: bold;}
+
+.selected {background-color: gainsboro;}
+/* Add application styles & imports to this file! */
+
+
+:root {
+  --primary-color: #153d77;
+  --secondary-color: #6c757d;
+  --white-color: #fff;
+  --success-color: #198754;
+  --delete-color: #dc3545;
+  --background-color: #f2f2f2;
+}
+
+.success-snackbar {
+  color: white;
+  --mdc-snackbar-container-color: var(--success-color);
+  --mat-mdc-snack-bar-button-color: var(--white-color);
+}
+
+.error-snackbar {
+  max-width: max-content !important;
+  color: white;
+  --mdc-snackbar-container-color: var(--delete-color);
+  border-color: #f5c6cb;
+
+  --mat-mdc-snack-bar-button-color: var(--white-color);
+}
+
+.light-success-snackbar {
+  color: #155724;
+  --mdc-snackbar-container-color: #d4edda;
+  --mat-mdc-snack-bar-button-color: darkgreen;
+}
+
+.light-error-snackbar {
+  color: #721c24;
+  --mdc-snackbar-container-color: #f8d7da;
+  border-color: #f5c6cb;
+  --mat-mdc-snack-bar-button-color: darkred;
+}
+
+
