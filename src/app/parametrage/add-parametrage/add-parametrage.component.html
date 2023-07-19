@@ -1,0 +1,77 @@
+
+
+<mat-toolbar color="primary" class="center-toolbar">
+    <span class="fill-remaining-space">Ajouter de {{namePanel}}  </span>
+  </mat-toolbar>
+  
+ <div class="form-container">
+    <form [formGroup]="addCusForm" sclass="form">
+
+      <div fxLayout="row" fxLayoutAlign="space-between stretch" >
+
+        <div fxFlex="50">
+          <mat-form-field >
+            
+            <mat-label>{{namePanel}}</mat-label>
+
+            <input matInput placeholder="{{namePanel}}" formControlName="service" required>
+    
+            <mat-error *ngIf="addCusForm.controls.service.hasError('required')">
+              Champ obligatoire
+            </mat-error>
+    
+          </mat-form-field>
+        </div>
+        <div fxFlex="48">
+          <mat-form-field>
+            <mat-label>Filiale</mat-label>
+            <mat-select  formControlName="fgRespClot" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let f of fg" [value]="f">
+                {{f.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addCusForm.hasError('required')">Veuillez choisir un filiale</mat-error>
+            <mat-hint>{{addCusForm.value?.name}}</mat-hint>
+          </mat-form-field>
+          </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between stretch" >
+            <div fxFlex="100">
+              <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+    
+              <div class="ng-autocomplete size-col">
+                <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Déchlencheur"
+                  historyIdentifier="employees1" [itemTemplate]="itemTemplate2" [notFoundTemplate]="notFoundTemplate"
+                  formControlName="declencheur">
+                </ng-autocomplete>
+    
+                <ng-template #itemTemplate2 let-item>
+                  <div class="item">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                      height="35">
+                    <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                    <em>matriculer : {{item.idUser}}</em>
+    
+                  </div>
+                </ng-template>
+    
+                <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+                </ng-template>
+                </div>
+              </div>
+              </div>
+
+
+  
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit"  (click)="modifPram()" [disabled]="!addCusForm.valid">Ajouter</button>
+      </div>
+  
+    </form>
+
+  </div>

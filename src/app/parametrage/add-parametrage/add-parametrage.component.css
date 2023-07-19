@@ -1,0 +1,49 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    font-family: Lato;
+}
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+
+.container {
+    padding: 10px;
+}
+
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    padding: 10px;
+}
+
+.form-element {
+    padding: 5px 0px 25px 2px;
+    width: 100%;
+}
+
+.mdc-button{
+    width: 100%;
+}
+
+
+
+
+.ng-autocomplete {
+    width: 100%;
+}
+
+
+mat-toolbar.mat-primary {
+    background: #004a9f;
+    text-align: center;
+    color: #fff;
+}

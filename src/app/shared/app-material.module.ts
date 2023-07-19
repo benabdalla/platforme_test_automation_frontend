@@ -38,11 +38,13 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatRippleModule} from '@angular/material/core';
 //import {MatMomentDateModule} from '@angular/material-moment-adapter';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    CommonModule,
+    CommonModule,AppRoutingModule,
     BrowserAnimationsModule,
     CdkTableModule,
     MatCheckboxModule,

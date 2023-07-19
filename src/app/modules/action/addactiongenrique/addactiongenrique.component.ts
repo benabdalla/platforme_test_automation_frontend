@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Action } from 'src/app/domain/model/Action';
@@ -8,6 +8,10 @@ import Utilisateur from 'src/app/domain/model/Utilisateur';
 import { ActionServiceService } from 'src/app/services/actionServices/action-service.service';
 import { EmployerServiceService } from 'src/app/services/employer-service.service';
 import { MessageAlertService } from 'src/app/shared/message-alert.service';
+import { ParametrageServicesService } from 'src/app/services/parametrage/parametrage-services.service';
+import { Site } from 'src/app/domain/model/Site';
+import { Processus } from 'src/app/domain/model/Processus';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addactiongenrique',
@@ -15,26 +19,48 @@ import { MessageAlertService } from 'src/app/shared/message-alert.service';
   styleUrls: ['./addactiongenrique.component.css']
 })
 export class AddactiongenriqueComponent {
-  public breakpoint!: number; // Breakpoint observer code
-  public fromScGenrique!: FormGroup;
-  public employees!: Utilisateur[];
+  breakpoint!: number; // Breakpoint observer code
+  fromScGenrique!: FormGroup;
+  employees!: Utilisateur[];
+  site!: Site[];
+  processus!: Processus[];
+
   wasFormChanged = false;
   message: string = "Scénario ajouté avec succès";
-
   constructor(
-    private fb: FormBuilder,
-    public dialog: MatDialog,private snackbarService :MessageAlertService
-    , private employer: EmployerServiceService, private snackbar: MatSnackBar, private serviceAction: ActionServiceService
+    private fb: FormBuilder,private router :Router,
+    public dialog: MatDialog, private snackbarService: MessageAlertService
+    , private employer: EmployerServiceService, private snackbar: MatSnackBar, private serviceAction: ActionServiceService,
+    private paramertageService: ParametrageServicesService
   ) { }
 
-  public ngOnInit(): void {
+  fgControl = new FormControl<any | null>(null, Validators.required);
+  selectFormControl = new FormControl('', Validators.required);
+  fg: any[] = [
+    { name: 'Mono' },
+    { name: 'Group' },
+    { name: 'Filiale 1' },
+    { name: 'Filiale 2' },
+  ];
+
+
+  ngOnInit(): void {
     this.getAllEmployer();
+    this.sites();
+    this.processusAll()
 
     this.fromScGenrique = this.fb.group({
-      declencheur: [null, [Validators.required]],
-      respoSuiv: [null, [Validators.required]],
-      respcloture: [null, [Validators.required]],
-      respoReal: [null, [Validators.required]]
+      declencheur: ["", [Validators.required]],
+      respoSuiv: ["", [Validators.required]],
+      respcloture: ["", [Validators.required]],
+      respoReal: ["", [Validators.required]],
+      fgDeclencheur: ["", [Validators.required]]
+      , fgRespReal: ["", [Validators.required]]
+      , fgRespSuivi: ["", [Validators.required]]
+      , fgRespClot: ["", [Validators.required]]
+      ,siteList: ["", [Validators.required]]
+      ,processusList: ["", [Validators.required]]
+
     });
     this.breakpoint = window.innerWidth <= 9000 ? 1 : 2; // Breakpoint observer code
   }
@@ -43,15 +69,29 @@ export class AddactiongenriqueComponent {
     this.employer.getAllEmployer().subscribe((response: Utilisateur[]) => {
       this.employees = response;
       console.log(this.employees);
-    },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
       }
     );
   }
 
+  sites(): void {
+    this.paramertageService.sites().subscribe((res:Site[]) => {
+      this.site=res
+      console.log(this.site);
+
+    })
+  }
+
+  processusAll(): void {
+    this.paramertageService.processus().subscribe((res:Processus[]) => {
+      this.processus=res
+      console.log(this.processus);
+
+    })
+  }
+
 
   public onAddScenario(): void {
+    console.log(this.fromScGenrique.valid)
     const action = new Action();
     const fromValue = this.fromScGenrique.value;
     console.log(fromValue);
@@ -59,6 +99,14 @@ export class AddactiongenriqueComponent {
     action.respCloture = fromValue.respcloture;
     action.respTraitement = fromValue.respoReal;
     action.dechlencheur = fromValue.declencheur;
+    action.filialeDeclencheur = fromValue.fgDeclencheur.name;
+    action.filialeRealisation = fromValue.fgRespReal.name;
+    action.filialeSuivi = fromValue.fgRespSuivi.name;
+    action.filialeCloture = fromValue.fgRespClot.name;
+    action.site=fromValue.siteList
+    action.processus=fromValue.processusList;
+    action.etat=0;
+    action.actSimplifier=0;
     console.log(action);
 
     this.serviceAction.addAction(action).subscribe(res => {
@@ -67,12 +115,12 @@ export class AddactiongenriqueComponent {
       this.dialog.closeAll();
     },
       (error) => {
-        // Handle error
-        console.error('Failed to add item:', error);
-        this.snackbarService.messageSuccess("error lors d'ajout");
+        this.snackbarService.messageErro("error lors d'ajout");
 
 
       });
+      this.router.navigate(['action']); // Navigate to the 'other' route
+
 
   }
 
@@ -109,5 +157,7 @@ export class AddactiongenriqueComponent {
   }
 
   keyword = 'name';
+  siteName = 'site';
+  processusName='processus'
 
 }

@@ -10,6 +10,9 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ViewOptions } from 'src/app/shared/view-options';
 import { MatTableDataSource } from '@angular/material/table';
+import { SpinirLoadService } from 'src/app/shared/spinir-load.service';
+import { DetailsSceanarioComponent } from './details-sceanario/details-sceanario.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-action',
@@ -24,37 +27,50 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ActionComponent{
   @Output() playPauseClicked = new EventEmitter<boolean>();
-  isLoading = false;
 
 
  
-  displayedColumns = ['id', 'Responsable dechlencheur', 'Responsable traitement', 'Responsable Côlture','Responsable suivi','...'];
+  displayedColumns = ['id', 'Déchlencheur','filiale.D', 'Responsable traitement', 'filiale.R','Responsable Côlture','filiale.C','Responsable suivi','filiale.S','...','....'];
   dataSource!: MatTableDataSource<Action>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  
+  isLoading = true;
 
-  constructor(public dialog: MatDialog,private serviceAction: ActionServiceService) {
+  constructor(private router :Router ,public dialog: MatDialog,private serviceAction: ActionServiceService,spinnerService :SpinirLoadService) {
     // Create 100 users
-    let actions: Action[] = [];
-  this.serviceAction.getActionAllAction().subscribe(res=>{
-   actions=res;
-   if(actions==null){
-    this.simulateDataLoad()
-    
- 
-   }
-   this.dataSource = new MatTableDataSource(res);
-   this.dataSource.paginator = this.paginator;
-   this.dataSource.sort = this.sort;
-  });
+    this.loadData()
+}
 
     // Assign the data to the data source for the table to render
- 
-  }
+
+loadData(){
+  let actions: Action[] = [];
+let id:number=0;
+  this.serviceAction.getActionAllAction(id).subscribe(res=>{
+    this.isLoading=false;
+   actions=res;
+   this.dataSource = new MatTableDataSource(actions);
+   this.dataSource.paginator = this.paginator;
+   this.dataSource.sort = this.sort;
+  }, 
+  error => this.isLoading = false
+);
+}
+
 runScenario(idScenario:number):void{
   console.log(idScenario)
   this.serviceAction.runSenario(idScenario).subscribe(
+    res=>{
+      console.log(res)
+    }
+  );
+
+}
+closeScenario(idScenario:number):void{
+  console.log(idScenario)
+  this.serviceAction.closeScenario(idScenario).subscribe(
     res=>{
       console.log(res)
     }
@@ -69,25 +85,43 @@ runScenario(idScenario:number):void{
 
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddSecActionComponent, {
+    this.router.navigate(['scsepcifique']); // Navigate to the 'other' route
+
+   /* const dialogRef = this.dialog.open(AddSecActionComponent, {
       width: '90%', height: '90%', disableClose: true
-    });
+    });*/
+
+    
   }
 
   openDialog2(): void {
     const dialogRef = this.dialog.open(AddactiongenriqueComponent, {
-      width: '90%', height: '90%', disableClose: true
+      width: '60%', height: '90%', disableClose: true
     });
+    dialogRef.afterClosed().subscribe((res)=>{
+      if(res)
+        this.loadData();
+    })
   }
-
-  simulateDataLoad() {
-    this.isLoading = true;
-
-    setTimeout(() => {
-      // Simulating data loading completion
-      this.isLoading = false;
-    }, 3000); // Simulating a 3-second delay
-  }
+deleteSecenario(idScenario:number){
+  this.serviceAction.deleteAction(idScenario).subscribe(
+    res=>{console.log(res)
+    this.loadData();
+    },error=>{
+      console.log(error)
+    }
+  )
+}
+openDialogDetails(idScenario:number):void{
+  const dialogRef = this.dialog.open(DetailsSceanarioComponent, {
+    width: '80%',
+    data: { idScenario: idScenario} // Pass the parameters as an object
+  });
+  dialogRef.afterClosed().subscribe((res)=>{
+    if(res)
+      this.loadData();
+  })
+}
 
 }
 

@@ -1,0 +1,109 @@
+<div fxLayout="row" fxLayoutAlign="space-between stretch" >
+
+  <div fxFlex="50">
+    
+
+    <mat-toolbar color="primary" class="center-toolbar">
+      <span class="fill-remaining-space">LISTE DE PARAMETRAGE </span>
+    </mat-toolbar>
+  <mat-card >
+  <mat-card-content>
+<div class="example-header">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+    <div class="example-container mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>N° </mat-header-cell>
+          <mat-cell *matCellDef="let row"> <strong> {{row.idPram}} </strong></mat-cell>
+        </ng-container>
+  
+        <!-- Progress Column -->
+        <ng-container matColumnDef="url">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>URL </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row?.url !== null">
+            <strong>  {{row.url}} </strong>
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="verssion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>LANGUE</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row?.verssion !== null">
+            <strong> {{row.verssion}} </strong>
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="navigateur">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> NAVIGATEUR </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row?.navigateur !== null">
+            <img width=10% src="https://chromeum.ru/wp-content/uploads/2019/08/AliExpress-Radar-dlya-Google-Chrome.png">
+          <strong>  
+            {{row.navigateur}} </strong>
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+
+  
+      
+  
+
+  
+        <ng-container matColumnDef="....">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
+        
+            <mat-icon style="color:#189cda" (click)="openDialogEdit(row.idPram)"> border_color</mat-icon>
+
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+</div>
+  </mat-card-content>
+</mat-card>
+</div>
+  <div fxFlex="48">
+<app-site></app-site>
+</div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-between stretch" >
+
+  <div fxFlex="50">
+    <app-processus></app-processus>
+  </div>
+  <div fxFlex="48">
+    <app-direction></app-direction>
+    </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between stretch" >
+
+      <div fxFlex="50">
+        <app-activite></app-activite>
+      </div>
+      <div fxFlex="48">
+        <app-service-compant></app-service-compant>
+        </div>
+        
+        </div>

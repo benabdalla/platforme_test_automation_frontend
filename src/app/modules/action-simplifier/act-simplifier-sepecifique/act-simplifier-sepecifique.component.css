@@ -1,0 +1,30 @@
+ng-autocomplete {
+    width: 390px;}
+    .postionement{
+        position: relative;
+        bottom: 60px;
+    }
+    .postionement2{
+        position: relative;
+        bottom: 70px;
+        width: 60px;
+        left: 1100px;
+    }
+    .example-container .mat-form-field + .mat-form-field {
+    }
+    
+    fieldset {
+      legend {
+        color: red
+      }
+      padding: 20px;
+      border: solid 1px red;
+    
+      .mat-form-field {
+        padding: 10px 0;
+      }
+    }
+
+    .mat-mdc-raised-button.mat-primary{
+      background-color: green;
+    }

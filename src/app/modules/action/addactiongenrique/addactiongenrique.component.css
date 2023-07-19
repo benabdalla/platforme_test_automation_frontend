@@ -4,7 +4,20 @@
     background-color: #03e95b;/* Replace with your desired color */
     color: white; /* Replace with the desired text color */
   }
-  
+  s
 .size-col{
     width: 80%;
 }
+mat-form-field{
+display: flex;
+flex-direction: column;
+width: 148px;
+height: 70px;
+position: relative;
+left: 200px;
+top: 20px;
+
+
+}
+ng-autocomplete {
+  width: 390px;}

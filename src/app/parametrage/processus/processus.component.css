@@ -1,0 +1,47 @@
+.demo-table {
+    width: 100%;
+  }
+  
+  .mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+  
+  ng-autocomplete {
+    width: 390px;}
+  
+  
+  #idmat-success {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+    
+  }
+  mat-cell{
+    color: #198754;
+  }
+  #ideyes{
+  position: relative;
+  right: 4px;
+  bottom: 6px;}
+  #idButtoneys{
+    height: 26px;
+  }
+  
+  mat-card{
+    width: 100%;
+  }
+  mat-toolbar.mat-primary {
+    background: #004a9f;
+    text-align: center;
+    color: #fff;
+}

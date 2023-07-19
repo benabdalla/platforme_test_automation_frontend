@@ -1,0 +1,37 @@
+<mat-card class="mat mr-4 ml-5 p-3" fxLayout="column" fxFlex>
+    <div fxLayout="row wrap" fxFlex fxLayoutGap="20px">
+      <ng-container *ngFor="let item of items">
+        <!-- customer  -->
+  
+        <div fxFlex="calc(33.3% - 20px)" class="m-1 pt-3" *ngIf="item?.value!=null">
+          <div fxLayout class="overview-style">
+            <div
+              [ngStyle]="{ 'background-color': item.color, border: item.border }"
+              class="overview-cart"
+            >
+              <div class="mt-4 heading-text">{{ item?.title }}</div>
+  
+              <img
+                class="pl-5"
+                src="https://www.pngall.com/wp-content/uploads/2016/05/Click-Download-PNG.png"
+                width="50px"
+              />
+            </div>
+          </div>
+          <div class="content pl-3">
+            <div>
+              <div
+               
+                fxLayoutAlign="space-between center"
+                class="pb-1 main-line border-bottom pt-2"
+              >
+              {{ item?.value }}
+              </div>
+            </div>
+          </div>
+          <!-- </ng-container> -->
+        </div>
+      </ng-container>
+    </div>
+  </mat-card>
+  
