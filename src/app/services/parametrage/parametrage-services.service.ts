@@ -5,6 +5,10 @@ import { Activite } from 'src/app/domain/model/Activite';
 import { Direction } from 'src/app/domain/model/Direction';
 import { Parametrage } from 'src/app/domain/model/Parametrage';
 import { Processus } from 'src/app/domain/model/Processus';
+import { ScenarioActiviteDto } from 'src/app/domain/model/ScenarioActiviteDto';
+import { ScenarioDirectionDto } from 'src/app/domain/model/ScenarioDirectionDto';
+import { ScenarioPrcocessDto } from 'src/app/domain/model/ScenarioProcessus';
+import { ScenarioServiceDto } from 'src/app/domain/model/ScenarioService';
 import { ScenarioSiteDto } from 'src/app/domain/model/ScenarioSiteDto';
 import { Site } from 'src/app/domain/model/Site';
 import { TabService } from 'src/app/domain/model/TabService';
@@ -37,6 +41,28 @@ public getScenarioSite(): Observable<ScenarioSiteDto[]> {
   return this.http.get<ScenarioSiteDto[]>(apiUrl);
 }
 
+     getScenrioActivite():Observable<ScenarioActiviteDto[]>{
+      const apiUrl = `${this.url}api/v3/paremetrage/get/scenarioactivite`;
+
+      return this.http.get<ScenarioActiviteDto[]>(apiUrl);
+    }
+   getScenrioProcessus():Observable<ScenarioPrcocessDto[]>{
+      const apiUrl = `${this.url}api/v3/paremetrage/get/scenarioprocessus`;
+
+      return this.http.get<ScenarioPrcocessDto[]>(apiUrl);
+    }
+     getScenrioScervice():Observable<ScenarioServiceDto[]>{
+      const apiUrl = `${this.url}api/v3/paremetrage/get/scenarioservice`;
+
+  return this.http.get<ScenarioServiceDto[]>(apiUrl);
+    }
+  getScenrioDirectionDtos():Observable<ScenarioDirectionDto[]> {
+      const apiUrl = `${this.url}api/v3/paremetrage/get/scenariodirection`;
+
+      return this.http.get<ScenarioDirectionDto[]>(apiUrl);
+    }
+
+
 
 public modifParametre(prametraes:Parametrage): Observable<any> {
   const apiUrl =this.url+"api/v3/paremetrage/modif/";
@@ -47,7 +73,7 @@ public modifParametre(prametraes:Parametrage): Observable<any> {
 
 
   public parametrage(): Observable<Parametrage[]> {
-    return this.http.get<Parametrage[]>(this.url + "/api/v3/paremetrage/parametre");
+    return this.http.get<Parametrage[]>(this.url + "api/v3/paremetrage/parametre");
   }
 
   public directions(): Observable<Direction[]> {
@@ -62,31 +88,31 @@ public modifParametre(prametraes:Parametrage): Observable<any> {
 
 
   public deleteSite(id:Number){
-    return this.http.delete<Site>(this.url + "/api/v3/paremetrage/delete/site/"+id);
+    return this.http.delete<ScenarioSiteDto>(this.url + "/api/v3/paremetrage/delete/site/"+id);
   }
 
 
   
   public deleteProcessus(id:Number){
-    return this.http.delete<Processus>(this.url + "/api/v3/paremetrage/delete/processus/"+id);
+    return this.http.delete<ScenarioPrcocessDto>(this.url + "/api/v3/paremetrage/delete/processus/"+id);
   }
 
 
   
   public deleteActivite(id:Number){
-    return this.http.delete<Site>(this.url + "/api/v3/paremetrage/delete/activite/"+id);
+    return this.http.delete<ScenarioActiviteDto>(this.url + "/api/v3/paremetrage/delete/activite/"+id);
   }
 
 
   public deleteService(id:Number){
-    return this.http.delete<Site>(this.url + "/api/v3/paremetrage/delete/service/"+id);
+    return this.http.delete<ScenarioServiceDto>(this.url + "/api/v3/paremetrage/delete/service/"+id);
   }
 
 
 
 
   public deleteDireection(id:Number){
-    return this.http.delete<Site>(this.url + "/api/v3/paremetrage/delete/direction/"+id);
+    return this.http.delete<ScenarioDirectionDto>(this.url + "/api/v3/paremetrage/delete/direction/"+id);
   }
 
 
@@ -95,17 +121,17 @@ public modifParametre(prametraes:Parametrage): Observable<any> {
     return this.http.post<ScenarioSiteDto>(this.url + "/api/v3/paremetrage/add/site", site);
   } 
 
-  public addProcess(processus:Processus): Observable<Site> {
-    return this.http.post<Site>(this.url + "/api/v3/paremetrage/add/processus", processus);
+  public addProcess(processusDto:ScenarioPrcocessDto): Observable<ScenarioPrcocessDto> {
+    return this.http.post<ScenarioPrcocessDto>(this.url + "/api/v3/paremetrage/add/processus", processusDto);
   } 
-  public addActivite(activite:Activite): Observable<Site> {
-    return this.http.post<Site>(this.url + "/api/v3/paremetrage/add/activite", activite);
+  public addActivite(activite:ScenarioActiviteDto): Observable<ScenarioActiviteDto> {
+    return this.http.post<ScenarioActiviteDto>(this.url + "/api/v3/paremetrage/add/activite", activite);
   } 
-  public addService(serviceTab:TabService): Observable<Site> {
-    return this.http.post<Site>(this.url + "/api/v3/paremetrage/add/service", serviceTab);
+  public addService(serviceTab:ScenarioServiceDto): Observable<ScenarioServiceDto> {
+    return this.http.post<ScenarioServiceDto>(this.url + "/api/v3/paremetrage/add/service", serviceTab);
   } 
-  public addDirection(direction:Direction): Observable<Site> {
-    return this.http.post<Site>(this.url + "/api/v3/paremetrage/add/direction", direction);
+  public addDirection(direction:ScenarioDirectionDto): Observable<ScenarioDirectionDto> {
+    return this.http.post<ScenarioDirectionDto>(this.url + "/api/v3/paremetrage/add/direction", direction);
   } 
  
   

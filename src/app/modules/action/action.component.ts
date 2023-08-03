@@ -96,7 +96,7 @@ closeScenario(idScenario:number):void{
 
   openDialog2(): void {
     const dialogRef = this.dialog.open(AddactiongenriqueComponent, {
-      width: '60%', height: '90%', disableClose: true
+      width: '80%', height: '95%', disableClose: true
     });
     dialogRef.afterClosed().subscribe((res)=>{
       if(res)

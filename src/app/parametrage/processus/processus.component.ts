@@ -9,6 +9,7 @@ import { Site } from 'src/app/domain/model/Site';
 import { ParametrageServicesService } from 'src/app/services/parametrage/parametrage-services.service';
 import { SpinirLoadService } from 'src/app/shared/spinir-load.service';
 import { AddParametrageComponent } from '../add-parametrage/add-parametrage.component';
+import { ScenarioPrcocessDto } from 'src/app/domain/model/ScenarioProcessus';
 
 @Component({
   selector: 'app-processus',
@@ -16,14 +17,16 @@ import { AddParametrageComponent } from '../add-parametrage/add-parametrage.comp
   styleUrls: ['./processus.component.css']
 })
 export class ProcessusComponent {
+ 
+
   @Output() playPauseClicked = new EventEmitter<boolean>();
 
 
 
-  displayedColumns = ['idSite', 'site','....'];
+  displayedColumns = ['idSite', 'site','dechlencheur','f','....'];
 
 
-  dataSource!: MatTableDataSource<Processus>;
+  dataSource!: MatTableDataSource<ScenarioPrcocessDto>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -39,16 +42,18 @@ export class ProcessusComponent {
   // Assign the data to the data source for the table to render
 
   loadData() {
-    let processus: Processus[] = [];
+    let sites: ScenarioPrcocessDto[] = [];
     let id: number = 0;
-    this.serviceParamter.processus().subscribe(res => {
+    this.serviceParamter.getScenrioProcessus().subscribe(
+      (res) => {
       this.isLoading = false;
-      processus = res;
-      this.dataSource = new MatTableDataSource(processus);
+      sites = res;
+      console.log(sites)
+      this.dataSource = new MatTableDataSource(sites);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     },
-      error => this.isLoading = false
+      (error) => this.isLoading = false
     );
   }
 
@@ -57,7 +62,6 @@ export class ProcessusComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
   }
-
 
 
   deleteScenario(id:Number):void{
@@ -79,7 +83,4 @@ export class ProcessusComponent {
         this.loadData();
     })
   }
-
-
-
 }

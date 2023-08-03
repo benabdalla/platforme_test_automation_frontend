@@ -44,6 +44,8 @@ export class ParametrageComponent {
     let id: number = 0;
     this.serviceParamter.parametrage().subscribe(res => {
       this.isLoading = false;
+      console.log("parmaetrage")
+      console.log(parametrage);
       parametrage = res;
       this.dataSource = new MatTableDataSource(parametrage);
       this.dataSource.paginator = this.paginator;
@@ -67,7 +69,10 @@ export class ParametrageComponent {
       data: { idParam: idScenario} // Pass the parameters as an object
     });
   }
-
+  copyLastToFirst(inputString: string): string {
+    const lastString = inputString.substr(inputString.lastIndexOf('/') + 1);
+    return lastString
+  }
 }
 
 

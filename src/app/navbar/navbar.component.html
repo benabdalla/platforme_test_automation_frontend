@@ -1,40 +1,182 @@
 <mat-toolbar class="mat-elevation-z8">
-  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'  && isLoggedIn" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened && isLoggedIn"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened  && isLoggedIn"> close </mat-icon>
   </button>
-  Platforme de test automatisé </mat-toolbar>
+  Platforme de test automatisé
+  <div class="spacer"></div>
+  <button mat-button class="menu-button" style="color: white;" class="nav-link" *ngIf="isLoggedIn && admin"
+    routerLink="/user">
+    <mat-icon style="color: white;">supervised_user_circle</mat-icon>
+    <span>User</span>
+  </button>
+
+  <button mat-button class="menu-button" style="color: white;" *ngIf="isLoggedIn" class="nav-link"
+    routerLink="/profile">
+
+    <mat-icon style="color: white;"> person_pin</mat-icon>
+
+    <span>{{ username }}</span>
+  </button>
+
+  <button mat-button class="menu-button" style="color: white;" class="nav-link" *ngIf="!isLoggedIn"
+    routerLink="/register">
+
+    <mat-icon style="color: white;"> supervisor_account</mat-icon>
+
+    <span>Sign Up</span>
+  </button>
+  <button mat-button class="menu-button" style="color: white;" class="nav-link" *ngIf="!isLoggedIn" routerLink="login">
+
+    <mat-icon style="color: white;"> person_pin</mat-icon>
+
+    <span>Login</span>
+  </button>
+
+
+  <a mat-button style="color: white;" *ngIf="isLoggedIn" href class="nav-link" (click)="logout()">Log Out</a>
+  <img *ngIf="isLoggedIn && !admin" class="avatar2" width="9%" height="90%"
+    src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
+
+  <img id="profile-img" class="avatar2" width="9%" height="50%" *ngIf="isLoggedIn && admin"
+    src="https://scontent.ftun15-1.fna.fbcdn.net/v/t1.6435-9/67715976_145409353324287_2056318852563730432_n.jpg?_nc_cat=108&cb=99be929b-59f725be&ccb=1-7&_nc_sid=174925&_nc_ohc=iVKWmO-xyS0AX-qdqxO&_nc_ht=scontent.ftun15-1.fna&oh=00_AfCxP4djMiDagTHmsM_oreMpmf2eqhxAe2MwJF071bx4dA&oe=64CE6BFF" />
+</mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-    <img class="avatar mat-elevation-z8"
+    <img class="avatar mat-elevation-z8" *ngIf="isLoggedIn && !admin" width="9%" height="90%"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
+
+    <img class="avatar mat-elevation-z8" *ngIf="isLoggedIn && admin" width="9%" height="90%"
       src="https://scontent.ftun15-1.fna.fbcdn.net/v/t1.6435-9/67715976_145409353324287_2056318852563730432_n.jpg?_nc_cat=108&cb=99be929b-59f725be&ccb=1-7&_nc_sid=174925&_nc_ohc=iVKWmO-xyS0AX-qdqxO&_nc_ht=scontent.ftun15-1.fna&oh=00_AfCxP4djMiDagTHmsM_oreMpmf2eqhxAe2MwJF071bx4dA&oe=64CE6BFF" />
 
-    <h4 class="name">Mootez Ben Abdallah</h4>
-    <p class="designation">Admin</p>
+    <h4 class="name">{{ username }}</h4>
+    <p class="designation">{{ role }}</p>
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/prametrage">
-      <mat-icon>settings</mat-icon>
-      <span>Parametrage</span>
-    </button>
-    <button mat-button class="menu-button" routerLink="/action">
-      <mat-icon>home</mat-icon>
-      <span>Action</span>
-    </button>
-    <button mat-button class="menu-button" routerLink="/reportaction">
-      <mat-icon>person</mat-icon>
-      <span>Report Action</span>
-    </button>
-    <button mat-button class="menu-button" routerLink="/actSimplifier">
-      <mat-icon>info</mat-icon>
-      <span>Action Simplifier</span>
-    </button>
-    <button mat-button class="menu-button" routerLink="/reportactionSimplier">
-      <mat-icon>info</mat-icon>
-      <span>Report action Simplifier</span>
-    </button>
+
+    <mat-expansion-panel [class.mat-elevation-z0]="true">
+      <mat-expansion-panel-header>
+
+        <button mat-button class="menu-button" routerLink="/help">
+          <mat-icon>settings</mat-icon>
+          <span>Parametrage</span>
+        </button>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/prametrage">
+            <mat-icon>settings</mat-icon><span>Parametrage</span>
+          </button>
+
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Site</span>
+          </button>
+
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Processus</span> </button>
+
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Activite</span>
+          </button>
+
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Direction</span>
+          </button>
+
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Service</span>
+          </button>
+
+        </mat-list-item>
+
+
+
+
+
+
+      </mat-nav-list>
+    </mat-expansion-panel>
+
+    <mat-divider></mat-divider>
+
+
+
+
+    <mat-expansion-panel [class.mat-elevation-z0]="true">
+      <mat-expansion-panel-header>
+
+        <button mat-button class="menu-button" routerLink="/help">
+          <mat-icon>dns</mat-icon>
+          <span>Action Details</span>
+        </button>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/action">
+            <mat-icon>dns</mat-icon>
+            <span>Action Details</span>
+          </button>
+
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/reportaction">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport action details</span>
+          </button>
+
+        </mat-list-item>
+
+      </mat-nav-list>
+    </mat-expansion-panel>
+
+
+
+
+    <mat-divider></mat-divider>
+
+
+
+
+    <mat-expansion-panel [class.mat-elevation-z0]="true">
+      <mat-expansion-panel-header>
+
+        <button mat-button class="menu-button" routerLink="/help">
+          <mat-icon>dns</mat-icon>
+          <span>Action Simplifier</span>
+        </button>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/action">
+            <mat-icon>dns</mat-icon>
+            <span>Action Simplifier</span>
+          </button>
+
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/reportaction">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Action Simplifier</span>
+          </button>
+
+        </mat-list-item>
+
+      </mat-nav-list>
+    </mat-expansion-panel>
+
 
     <mat-divider></mat-divider>
 
@@ -42,6 +184,9 @@
       <mat-icon>help</mat-icon>
       <span>documentation</span>
     </button>
+
+
+
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content mat-elevation-z8">
@@ -49,57 +194,3 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-<!--
-<div fxLayout="column" fxFlexFill>
-    <mat-toolbar class="navbar-color mat-elevation-z4 p-3" fxLayout="row" fxLayoutAlign="start stretch"
-        style="z-index: 2">
-
-        <button mat-button (click)="drawer.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-
-        <button mat-button routerLink="/" routerLinkActive="router-link-active">
-            <mat-icon>home</mat-icon>
-        </button>
-
-
-        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-            <button mat-button routerLink="/" routerLinkActive="router-link-active no-border">connexion</button>
-        </div>
-    </mat-toolbar>
-
-    <mat-drawer-container fxFlex autosize class="background">
-        <mat-drawer #drawer>
-            <div fxLayout="column">
-                <button mat-button  (click)="showSubmenu = !showSubmenu" class="parent"
-                    fxLayoutAlign="start" class="py-2 pr-5">
-                    <mat-icon class="mr-2">filter_1</mat-icon>action</button>
-                    <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
-                        <a mat-list-item routerLink="/action" routerLinkActive="no-border" ><span><img class="logo" src="https://foodinnov.fr/wp-content/uploads/2021/02/Selenium_Logo.png"><h3>action</h3></span></a>
-                        <a mat-list-item routerLink="/reportaction" routerLinkActive="no-border"><img class="logo"  src="https://seeklogo.com/images/C/cucumber-logo-D727C551CE-seeklogo.com.png"/><h3>Rapport Cucumber</h3> </a>
-                   
-                    </div>
-                                        
-
-                <mat-divider></mat-divider>
-              
-            </div>
-        </mat-drawer>
-
-    
-        <div style="display: inline;">
-            <router-outlet></router-outlet>
-        </div>
-
-
-
-
-
-
-
-
-    </mat-drawer-container>
-</div>
--->

@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { Activite } from 'src/app/domain/model/Activite';
 import { Direction } from 'src/app/domain/model/Direction';
 import { Processus } from 'src/app/domain/model/Processus';
+import { ScenarioActiviteDto } from 'src/app/domain/model/ScenarioActiviteDto';
+import { ScenarioDirectionDto } from 'src/app/domain/model/ScenarioDirectionDto';
+import { ScenarioPrcocessDto } from 'src/app/domain/model/ScenarioProcessus';
+import { ScenarioServiceDto } from 'src/app/domain/model/ScenarioService';
 import { ScenarioSiteDto } from 'src/app/domain/model/ScenarioSiteDto';
 import { Site } from 'src/app/domain/model/Site';
 import { TabService } from 'src/app/domain/model/TabService';
@@ -67,10 +71,10 @@ export class AddParametrageComponent {
       this.addSite();
     }
     if(this.namePanel==="Processus"){
-      this.addProcessu(fromValue.service);
+      this.addProcessu();
     }
     if(this.namePanel==="Activite"){
-      this.addActivite(fromValue.service);
+      this.addActivite();
     }
     if(this.namePanel==="Direction"){
       this.adddirection(fromValue.service);
@@ -88,10 +92,19 @@ export class AddParametrageComponent {
 
   }
 addService(name:string){
-  console.log(name)
-  const serviceData = new TabService();
-  serviceData.service=name;
-  this.paramertageService.addService(serviceData).subscribe(res=>{
+  console.log(this.addCusForm.valid)
+  const  scenarioActiviteDto= new ScenarioServiceDto();
+const tabService =new TabService();
+  const fromValue = this.addCusForm.value;
+  console.log(fromValue);
+  console.log()
+  tabService.service=fromValue.service;
+  scenarioActiviteDto.tabService =tabService;
+  scenarioActiviteDto.filialeDeclencheur=fromValue.fgRespClot.name;
+  console.log(fromValue.dechlencheur)
+  scenarioActiviteDto.dechlencheur=fromValue.declencheur;
+ console.log(scenarioActiviteDto)
+  this.paramertageService.addService(scenarioActiviteDto).subscribe(res=>{
   this.snackbarService.messageSuccess(this.message)
 
 },
@@ -139,16 +152,27 @@ const siteTab =new Site();
 getAllEmployer(): void {
   this.employer.getAllEmployer().subscribe((response: Utilisateur[]) => {
     this.employees = response;
+    console.log("employes");
+
     console.log(this.employees);
     }
   );
 }
 
-addProcessu(name:string){
-  console.log(name)
-  const serviceData = new Processus();
-  serviceData.processus=name;
-  this.paramertageService.addProcess(serviceData).subscribe(res=>{
+addProcessu(){
+  console.log(this.addCusForm.valid)
+  const processusDto = new ScenarioPrcocessDto();
+const processus =new Processus();
+  const fromValue = this.addCusForm.value;
+  console.log(fromValue);
+  console.log()
+  processus.processus=fromValue.service;
+  processusDto.processus =processus;
+  processusDto.filialeDeclencheur=fromValue.fgRespClot.name;
+  console.log(fromValue.dechlencheur)
+  processusDto.dechlencheur=fromValue.declencheur;
+ console.log(processusDto)
+  this.paramertageService.addProcess(processusDto).subscribe(res=>{
   this.snackbarService.messageSuccess(this.message)
 
 },
@@ -159,11 +183,20 @@ addProcessu(name:string){
   });
   this.router.navigate(['prametrage']); // Navigate to the 'other' route
 }
-addActivite(name:string){
-  console.log(name)
-  const serviceData = new Activite();
-  serviceData.activite=name;
-  this.paramertageService.addActivite(serviceData).subscribe(res=>{
+addActivite(){
+  console.log(this.addCusForm.valid)
+  const activiteDto = new ScenarioActiviteDto();
+const activite =new Activite();
+  const fromValue = this.addCusForm.value;
+  console.log(fromValue);
+  console.log()
+  activite.activite=fromValue.service;
+  activiteDto.activite =activite;
+  activiteDto.filialeDeclencheur=fromValue.fgRespClot.name;
+  console.log(fromValue.dechlencheur)
+  activiteDto.dechlencheur=fromValue.declencheur;
+ console.log(activiteDto)
+  this.paramertageService.addActivite(activiteDto).subscribe(res=>{
   this.snackbarService.messageSuccess(this.message)
 
 },
@@ -175,10 +208,19 @@ addActivite(name:string){
   this.router.navigate(['prametrage']); // Navigate to the 'other' route
 }
 adddirection(name:string){
-  console.log(name)
-  const serviceData = new Direction();
-  serviceData.direction=name;
-  this.paramertageService.addDirection(serviceData).subscribe(res=>{
+  console.log(this.addCusForm.valid)
+  const ScenarioActiviteDto = new ScenarioDirectionDto();
+const direction =new Direction();
+  const fromValue = this.addCusForm.value;
+  console.log(fromValue);
+  console.log()
+  direction.direction=fromValue.service;
+  ScenarioActiviteDto.direction =direction;
+  ScenarioActiviteDto.filialeDeclencheur=fromValue.fgRespClot.name;
+  console.log(fromValue.dechlencheur)
+  ScenarioActiviteDto.dechlencheur=fromValue.declencheur;
+ console.log(ScenarioActiviteDto)
+  this.paramertageService.addDirection(ScenarioActiviteDto).subscribe(res=>{
   this.snackbarService.messageSuccess(this.message)
 
 },

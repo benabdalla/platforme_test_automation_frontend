@@ -9,6 +9,7 @@ import { TabService } from 'src/app/domain/model/TabService';
 import { ParametrageServicesService } from 'src/app/services/parametrage/parametrage-services.service';
 import { SpinirLoadService } from 'src/app/shared/spinir-load.service';
 import { AddParametrageComponent } from '../add-parametrage/add-parametrage.component';
+import { ScenarioServiceDto } from 'src/app/domain/model/ScenarioService';
 
 @Component({
   selector: 'app-service-compant',
@@ -20,10 +21,10 @@ export class ServiceCompantComponent {
 
 
 
-  displayedColumns = ['idSite', 'site','....'];
+  displayedColumns = ['idSite', 'site','dechlencheur','f','....'];
 
 
-  dataSource!: MatTableDataSource<TabService>;
+  dataSource!: MatTableDataSource<ScenarioServiceDto>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -40,11 +41,12 @@ export class ServiceCompantComponent {
   // Assign the data to the data source for the table to render
 
   loadData() {
-    let servi: TabService[] = [];
+    let servi: ScenarioServiceDto[] = [];
     let id: number = 0;
-    this.serviceParamter.serviceApi().subscribe(res => {
+    this.serviceParamter.getScenrioScervice().subscribe(res => {
       this.isLoading = false;
       servi    = res;
+      console.log(res)
       this.dataSource = new MatTableDataSource(servi);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

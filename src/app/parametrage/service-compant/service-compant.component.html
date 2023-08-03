@@ -21,53 +21,66 @@
       </div>
 </div>
     </div>
-      <div class="example-container mat-elevation-z8">
-        <mat-table [dataSource]="dataSource" matSort>
-          <!-- ID Column -->
-          <ng-container matColumnDef="idSite">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>N° </mat-header-cell>
-            <mat-cell *matCellDef="let row"> <strong> {{row.idService}} </strong></mat-cell>
-          </ng-container>
-    
-          <!-- Progress Column -->
-          <ng-container matColumnDef="site">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>SERVICES </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <ng-container *ngIf="row?.service !== null">
-              <strong>  {{row.service}} </strong>
-              </ng-container>
-            </mat-cell>
-          </ng-container>
-    
-
+          
+    <div class="example-container mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="idSite">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>N° </mat-header-cell>
+          <mat-cell *matCellDef="let row">   {{row.idScenarioService}}  </mat-cell>
+        </ng-container>
   
-    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="site">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Service </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row?.tabService !== null">
+               {{row.tabService.service}}  
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dechlencheur">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Déchlencheur </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row?.dechlencheur !== null">
+               {{row.dechlencheur.name}}  
+            </ng-container>
+          </mat-cell>
+
+        </ng-container>
+        <ng-container matColumnDef="f">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Filiale </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row?.filialeDeclencheur !== null">
+               {{row.filialeDeclencheur}}  
+            </ng-container>
+          </mat-cell>
+
+        </ng-container>
         
-    
-  
-    
-          <ng-container matColumnDef="....">
-            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
-                <mat-icon>play_arrow</mat-icon>
-                <mat-icon style="color:rgb(238, 65, 65)">stop</mat-icon>
+        
+        <ng-container matColumnDef="....">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let row"   style="overflow:visible;" fxLayout="row" fxLayoutGap="6px">
+              <mat-icon>play_arrow</mat-icon>
+              <mat-icon style="color:rgb(238, 65, 65)">stop</mat-icon>
 
-                
-              <mat-icon style="color:#da4518" (click)="deleteScenario(row.idService)"> delete</mat-icon>
-  
-            </mat-cell>
-          </ng-container>
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;">
-          </mat-row>
-        </mat-table>
-        <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">
-          <mat-progress-spinner color="primary" mode="indeterminate">
-          </mat-progress-spinner>
-        </div>
-    
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              
+              <mat-icon style="color:#da4518" (click)="deleteScenario(row.idScenarioService)"> delete</mat-icon>
+
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
       </div>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
   </div>
     </mat-card-content>
   </mat-card>

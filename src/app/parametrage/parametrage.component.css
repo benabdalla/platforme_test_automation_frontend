@@ -29,12 +29,8 @@
   mat-cell{
     color: #198754;
   }
-  #ideyes{
-  position: relative;
-  right: 4px;
-  bottom: 6px;}
-  #idButtoneys{
-    height: 26px;
+  mat-header-cell{
+    overflow: visible!important;
   }
   
   mat-card{

@@ -28,7 +28,7 @@
           <!-- ID Column -->
           <ng-container matColumnDef="idSite">
             <mat-header-cell *matHeaderCellDef mat-sort-header>N° </mat-header-cell>
-            <mat-cell *matCellDef="let row"> <strong> {{row.idScenarioSite}} </strong></mat-cell>
+            <mat-cell *matCellDef="let row">   {{row.idScenarioSite}}  </mat-cell>
           </ng-container>
     
           <!-- Progress Column -->
@@ -36,7 +36,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>SITES </mat-header-cell>
             <mat-cell *matCellDef="let row">
               <ng-container *ngIf="row?.site !== null">
-              <strong>  {{row.site.site}} </strong>
+                 {{row.site.site}}  
               </ng-container>
             </mat-cell>
           </ng-container>
@@ -44,7 +44,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>Déchlencheur </mat-header-cell>
             <mat-cell *matCellDef="let row">
               <ng-container *ngIf="row?.dechlencheur !== null">
-              <strong>  {{row.dechlencheur.name}} </strong>
+                 {{row.dechlencheur.name}}  
               </ng-container>
             </mat-cell>
 
@@ -53,7 +53,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>Filiale </mat-header-cell>
             <mat-cell *matCellDef="let row">
               <ng-container *ngIf="row?.filialeDeclencheur !== null">
-              <strong>  {{row.filialeDeclencheur}} </strong>
+                 {{row.filialeDeclencheur}}  
               </ng-container>
             </mat-cell>
 
@@ -62,13 +62,17 @@
           
           <ng-container matColumnDef="....">
             <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
-                <mat-icon>play_arrow</mat-icon>
-                <mat-icon style="color:rgb(238, 65, 65)">stop</mat-icon>
-
+            <mat-cell *matCellDef="let row" fxLayout="row"  style="overflow:visible;" >
+                <mat-icon  style="overflow:visible;" *ngIf="!isLoading2" (click)="runScenario(row.idScenarioSite)"> play_arrow</mat-icon>
                 
-                <mat-icon style="color:#da4518" (click)="deleteScenario(row.idSite)"> delete</mat-icon>
+                 <mat-icon *ngIf="isLoading2" (click)="closeScenario(row.idScenarioSite)" style="overflow:visible;color:rgb(238, 65, 65)" >stop</mat-icon>
+            
+                <mat-icon *ngIf="!isLoading2" style="overflow:visible;color:#da4518" (click)="deleteScenario(row.idScenarioSite)"> delete</mat-icon>
   
+                <div *ngIf="isLoading2" style="display: flex; justify-content: center; align-items: center; background: white;">
+                  <mat-progress-spinner style="width: 20px;height: 20px;" color="primary" mode="indeterminate">
+                  </mat-progress-spinner>
+                </div>
             </mat-cell>
           </ng-container>
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

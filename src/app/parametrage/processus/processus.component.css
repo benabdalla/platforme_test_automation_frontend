@@ -45,3 +45,6 @@
     text-align: center;
     color: #fff;
 }
+mat-header-cell{
+  overflow: visible!important;
+}

@@ -2,14 +2,9 @@ ng-autocomplete {
     width: 390px;}
     .postionement{
         position: relative;
-        bottom: 60px;
+        bottom: 206px;
     }
-    .postionement2{
-        position: relative;
-        bottom: 70px;
-        width: 60px;
-        left: 1100px;
-    }
+
     .example-container .mat-form-field + .mat-form-field {
     }
     

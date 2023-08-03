@@ -9,6 +9,7 @@ import { Site } from 'src/app/domain/model/Site';
 import { ParametrageServicesService } from 'src/app/services/parametrage/parametrage-services.service';
 import { SpinirLoadService } from 'src/app/shared/spinir-load.service';
 import { AddParametrageComponent } from '../add-parametrage/add-parametrage.component';
+import { ScenarioDirectionDto } from 'src/app/domain/model/ScenarioDirectionDto';
 
 @Component({
   selector: 'app-direction',
@@ -18,13 +19,10 @@ import { AddParametrageComponent } from '../add-parametrage/add-parametrage.comp
 export class DirectionComponent {
   @Output() playPauseClicked = new EventEmitter<boolean>();
 
+  displayedColumns = ['idSite', 'site','dechlencheur','f','....'];
 
 
-  displayedColumns = ['idSite', 'site','....'];
-
-
-  dataSource!: MatTableDataSource<Direction>;
-   direction!: Direction[] ;
+  dataSource!: MatTableDataSource<ScenarioDirectionDto>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -32,6 +30,7 @@ export class DirectionComponent {
   isLoading = true;
 
   constructor(private router: Router, public dialog: MatDialog, private serviceParamter: ParametrageServicesService, spinnerService: SpinirLoadService) {
+    // Create 100 users
     this.loadData()
   }
   
@@ -39,20 +38,18 @@ export class DirectionComponent {
   // Assign the data to the data source for the table to render
 
   loadData() {
-   
+    let sites: ScenarioDirectionDto[] = [];
     let id: number = 0;
-    this.serviceParamter.directions().subscribe(res => {
+    this.serviceParamter.getScenrioDirectionDtos().subscribe(
+      (res) => {
       this.isLoading = false;
-      this.direction = res;
-      console.log(res);
-      console.log(this.direction)
-      this.dataSource = new MatTableDataSource(res);
+      sites = res;
+      console.log(sites)
+      this.dataSource = new MatTableDataSource(sites);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(this.dataSource.data);
-
     },
-      error => this.isLoading = false
+      (error) => this.isLoading = false
     );
   }
 
@@ -61,6 +58,12 @@ export class DirectionComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
   }
+
+
+
+
+
+
 
   deleteScenario(id:Number):void{
     console.log(id);

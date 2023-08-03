@@ -20,7 +20,7 @@ export class ActionServiceService {
     return this.http.get<Action>(this.url + "/api/v2/actions/run/simplifier/" + id);
   }
   public closeScenario(id: number): Observable<Action> {
-    return this.http.get<Action>(this.url + "/api/v2/actions/close/" + id);
+    return this.http.get<Action>(this.url + "api/v2/actions/close/" + id);
   }
 
 

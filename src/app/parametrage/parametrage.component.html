@@ -20,7 +20,7 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef mat-sort-header>N° </mat-header-cell>
-          <mat-cell *matCellDef="let row"> <strong> {{row.idPram}} </strong></mat-cell>
+          <mat-cell *matCellDef="let row">   {{row.idPram}}  </mat-cell>
         </ng-container>
   
         <!-- Progress Column -->
@@ -28,7 +28,7 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>URL </mat-header-cell>
           <mat-cell *matCellDef="let row">
             <ng-container *ngIf="row?.url !== null">
-            <strong>  {{row.url}} </strong>
+              {{copyLastToFirst(row.url)}}
             </ng-container>
           </mat-cell>
         </ng-container>
@@ -37,7 +37,7 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>LANGUE</mat-header-cell>
           <mat-cell *matCellDef="let row">
             <ng-container *ngIf="row?.verssion !== null">
-            <strong> {{row.verssion}} </strong>
+              {{row.verssion}}  
             </ng-container>
           </mat-cell>
         </ng-container>
@@ -48,8 +48,8 @@
           <mat-cell *matCellDef="let row">
             <ng-container *ngIf="row?.navigateur !== null">
             <img width=10% src="https://chromeum.ru/wp-content/uploads/2019/08/AliExpress-Radar-dlya-Google-Chrome.png">
-          <strong>  
-            {{row.navigateur}} </strong>
+         
+            {{row.navigateur}}
             </ng-container>
           </mat-cell>
         </ng-container>
@@ -88,6 +88,7 @@
 </div>
 </div>
 
+
 <div fxLayout="row" fxLayoutAlign="space-between stretch" >
 
   <div fxFlex="50">
@@ -107,3 +108,4 @@
         </div>
         
         </div>
+      

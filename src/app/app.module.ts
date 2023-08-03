@@ -33,23 +33,30 @@ import { DirectionComponent } from './parametrage/direction/direction.component'
 import { ActiviteComponent } from './parametrage/activite/activite.component';
 import { ServiceCompantComponent } from './parametrage/service-compant/service-compant.component';
 import { AddParametrageComponent } from './parametrage/add-parametrage/add-parametrage.component';
+import { Authentification2 } from './authentification/app.authentification';
+import { AuthentificationModule } from './authentification/authentification.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+
+NavbarComponent,Authentification2,
     ActionComponent,
     AuditComponent,
     AddSecActionComponent,
-    AddactiongenriqueComponent, DetailsSceanarioComponent, ReporatActionComponent, ActionactionSimplifierComponent,ActSimplifierSepecifiqueComponent,ActSimplifierGeniriqueComponent, ParametrageComponent, EditPrametrageComponent,SiteComponent, ProcessusComponent, DirectionComponent, ActiviteComponent, ServiceCompantComponent, AddParametrageComponent
+    AddactiongenriqueComponent, DetailsSceanarioComponent, ReporatActionComponent, 
+    ActionactionSimplifierComponent,ActSimplifierSepecifiqueComponent,ActSimplifierGeniriqueComponent,
+     ParametrageComponent,
+     EditPrametrageComponent,SiteComponent, ProcessusComponent, DirectionComponent, ActiviteComponent, 
+     ServiceCompantComponent, AddParametrageComponent
 
   ],
   imports: [MatInputModule,
     NgFor, NgIf,
     MatSelectModule,
-    MatFormFieldModule,
+MatFormFieldModule,
     BrowserModule, ReactiveFormsModule, FormsModule, MatCardModule,
     AppRoutingModule, AutocompleteLibModule, MatSnackBarModule,
     BrowserAnimationsModule, AppMaterialModule, FlexLayoutModule, MatNativeDateModule, HttpClientModule
