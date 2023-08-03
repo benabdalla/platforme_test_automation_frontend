@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+    <mat-card-title>Delete employee</mat-card-title>
+    <mat-card-subtitle> <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button></mat-card-subtitle>
+    <mat-card-content>
+        <p>Are you sure you want to delete employee {{deleteEmployee?.name}}?</p>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button mat-button [mat-dialog-close]="deleteEmployee?.id" type="submit" class="btn btn-primary">
+    Yes
+        </button>
+        </div>
+    </mat-card-actions>
+</mat-card>
