@@ -1,44 +1,92 @@
-.demo-table {
-    width: 100%;
-  }
+
   mat-toolbar {
     background: #004a9f;
     color: white;
   }
-  .mat-mdc-row .mat-mdc-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
-    cursor: pointer;
-  }
-  
-  .mat-mdc-row:hover .mat-mdc-cell {
-    border-color: currentColor;
-  }
-  
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
-  
-  ng-autocomplete {
-    width: 390px;}
-  
-  
-  #idmat-success {
-    color: #fff;
-    background-color: #198754;
-    border-color: #198754;
-    
-  }
-  #ideyes{
-  position: relative;
-  right: 4px;
-  bottom: 6px;}
-  #idButtoneys{
-    height: 26px;
-  }
+ 
   
   mat-toolbar.mat-primary {
     background: #004a9f;
     text-align: center;
     color: #fff;
+}
+.line{
+  display: inline!important;
+}
+.custom-card {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  padding: 16px;
+}
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+mat-toolbar.mat-primary {
+  background: #004a9f;
+  text-align: center;
+  color: #fff;
+}
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+ng-autocomplete {
+  width: 390px;}
+
+
+#idmat-success {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
+  
+}
+#ideyes{
+position: relative;
+right: 4px;
+bottom: 6px;}
+#idButtoneys{
+  height: 26px;
+}
+
+
+#idmat-success {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
+  
+}
+mat-cell{
+  color: #198754;
+}
+
+
+mat-card{
+  width: 100%;
+}
+mat-toolbar.mat-primary {
+  background: #004a9f;
+  text-align: center;
+  color: #fff;
+}
+
+mat-header-cell{
+overflow: visible!important;
+}
+
+.button-class{
+  width: 30%;
+  height: 50%;
+  background: white;
 }

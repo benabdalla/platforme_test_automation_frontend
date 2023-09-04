@@ -35,25 +35,39 @@ import { ServiceCompantComponent } from './parametrage/service-compant/service-c
 import { AddParametrageComponent } from './parametrage/add-parametrage/add-parametrage.component';
 import { Authentification2 } from './authentification/app.authentification';
 import { AuthentificationModule } from './authentification/authentification.module';
+import { RapportComponent } from './parametrage/rapport/rapport.component';
+import { LoginComponent } from './authentification/login/login.component';
+import { ActSimplifierDetailsComponent } from './modules/action-simplifier/act-simplifier-details/act-simplifier-details.component';
+import { DemandeAtionComponent } from './modules/demande-action/demande-ation.component';
+import { DemandeSpecifiqueComponent } from './modules/demande-action/demande-specifique/demande-specifique.component';
+import { DetailsScenarioComponent } from './modules/demande-action/details-scenario/details-scenario.component';
+import { GeneriqueScenarioComponent } from './modules/demande-action/generique-scenario/generique-scenario.component';
+import { ReportScenarioComponent } from './modules/demande-action/report-scenario/report-scenario.component';
+import { ActSimplifierReportComponent } from './modules/action-simplifier/act-simplifier-report/act-simplifier-report.component';
+import { ReunionComponent } from './modules/reunion/reunion.component';
+import { ReunionSpecComponent } from './modules/reunion/reunion-spec/reunion-spec.component';
+import { ReunionReportComponent } from './modules/reunion/reunion-report/reunion-report.component';
+import { ReunionDetailsComponent } from './modules/reunion/reunion-details/reunion-details.component';
+import { ReunionGenirqueComponent } from './modules/reunion/reunion-genirque/reunion-genirque.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,DemandeSpecifiqueComponent,
 
 NavbarComponent,Authentification2,
-    ActionComponent,
+    ActionComponent,LoginComponent,ActSimplifierDetailsComponent,
     AuditComponent,
     AddSecActionComponent,
     AddactiongenriqueComponent, DetailsSceanarioComponent, ReporatActionComponent, 
-    ActionactionSimplifierComponent,ActSimplifierSepecifiqueComponent,ActSimplifierGeniriqueComponent,
+    ActionactionSimplifierComponent,ActSimplifierSepecifiqueComponent,ActSimplifierGeniriqueComponent,ActSimplifierReportComponent,
      ParametrageComponent,
      EditPrametrageComponent,SiteComponent, ProcessusComponent, DirectionComponent, ActiviteComponent, 
-     ServiceCompantComponent, AddParametrageComponent
+     ServiceCompantComponent, AddParametrageComponent, RapportComponent, DemandeAtionComponent, DemandeSpecifiqueComponent, DetailsScenarioComponent, GeneriqueScenarioComponent, ReportScenarioComponent, ReunionComponent, ReunionSpecComponent, ReunionReportComponent, ReunionDetailsComponent, ReunionGenirqueComponent
 
   ],
-  imports: [MatInputModule,
+  imports: [MatInputModule,FlexLayoutModule,
     NgFor, NgIf,
     MatSelectModule,
 MatFormFieldModule,

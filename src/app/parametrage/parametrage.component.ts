@@ -68,9 +68,15 @@ export class ParametrageComponent {
       width: '50%',height:'70%',
       data: { idParam: idScenario} // Pass the parameters as an object
     });
+    dialogRef.afterClosed().subscribe((res)=>{
+      if(res)
+        this.loadData();
+    })
   }
   copyLastToFirst(inputString: string): string {
+    console.log("lien:"+inputString);
     const lastString = inputString.substr(inputString.lastIndexOf('/') + 1);
+   console.log("version web :"+lastString);
     return lastString
   }
 }

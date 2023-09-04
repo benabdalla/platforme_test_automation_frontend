@@ -71,11 +71,7 @@ export class ActSimplifierSepecifiqueComponent {
         , processusList: ["", [Validators.required]],
         source: new FormControl('', Validators.required),
         typeAction: ["", [Validators.required]],
-        priorite: ["", [Validators.required]],
-        gravite: ["", [Validators.required]],
-        type_cause: ["", [Validators.required]],
         designation: ["", [Validators.required]],
-        description: ["", [Validators.required]],
         activite: ["", [Validators.required]],
         direction: ["", [Validators.required]],
         service: ["", [Validators.required]],
@@ -85,8 +81,7 @@ export class ActSimplifierSepecifiqueComponent {
         date_suivi: ["", [Validators.required]],
         taux_suivi: ["", [Validators.required]],
         date_création: ["", [Validators.required]],
-        produit: ["", [Validators.required]]
-  
+      
       });
       this.breakpoint = window.innerWidth <= 900 ? 1 : 2; // Breakpoint observer code
     }
@@ -149,8 +144,7 @@ export class ActSimplifierSepecifiqueComponent {
       action.filialeSuivi = fromValue.fgRespSuivi.name;
       action.filialeCloture = fromValue.fgRespClot.name;
       action.designation = fromValue.designation
-      action.description = fromValue.description
-      action.DesiSA = fromValue.Desi_SA
+      action.desiSA = fromValue.Desi_SA
       action.dateSuivi = fromValue.date_suivi
       action.source = fromValue.source
       action.activite = fromValue.activite;
@@ -158,16 +152,12 @@ export class ActSimplifierSepecifiqueComponent {
       action.service = fromValue.service;
       action.site=fromValue.siteList
       action.processus=fromValue.processusList;
-      action.gravite = fromValue.gravite
-      action.priorite = fromValue.priorite
       action.typeAction = fromValue.typeAction
-      action.typeCause = fromValue.type_cause
       action.etat = 1;
       action.dateRealisation = fromValue.date_realisation
       action.tauxSuivi = fromValue.taux_suivi
       action.dateCreation = fromValue.date_création
-      action.produit = fromValue.produit
-      action.etat=1;
+action.actSimplifier=1;
       // action.run: boolean=false    
       console.log(action);
   
@@ -181,7 +171,7 @@ export class ActSimplifierSepecifiqueComponent {
   
   
         });
-      this.router.navigate(['action']); // Navigate to the 'other' route
+      this.router.navigate(['actSimplifier']); // Navigate to the 'other' route
   
   
     }
@@ -224,7 +214,7 @@ export class ActSimplifierSepecifiqueComponent {
   
     viderFroms(): void {
       this.addCusForm.reset();
-      this.router.navigate(['action']); // Navigate to the 'other' route
+      this.router.navigate(['actSimplifier']); // Navigate to the 'other' route
   
   
   

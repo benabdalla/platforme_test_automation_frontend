@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from '../authentification/_services/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,7 @@ export class NavbarComponent {
   role?:string;
   admin=false;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService,private router: Router) { }
 
   mouseenter() {
     if (!this.isExpanded) {
@@ -60,6 +61,12 @@ export class NavbarComponent {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+
+
+  onClickNavigate(name:string) {
+    this.router.navigate(['/parametrage/rapport', name]);
   }
 
 }

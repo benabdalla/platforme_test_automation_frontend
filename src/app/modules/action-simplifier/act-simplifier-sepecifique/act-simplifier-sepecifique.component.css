@@ -1,30 +1,23 @@
-ng-autocomplete {
-    width: 390px;}
-    .postionement{
-        position: relative;
-        bottom: 60px;
-    }
-    .postionement2{
-        position: relative;
-        bottom: 70px;
-        width: 60px;
-        left: 1100px;
-    }
-    .example-container .mat-form-field + .mat-form-field {
-    }
-    
-    fieldset {
-      legend {
-        color: red
-      }
-      padding: 20px;
-      border: solid 1px red;
-    
-      .mat-form-field {
-        padding: 10px 0;
-      }
-    }
+.line{
+  display: inline!important;
+}
+.custom-card {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  padding: 16px;
+}
 
-    .mat-mdc-raised-button.mat-primary{
-      background-color: green;
-    }
+
+mat-toolbar {
+  background: #004a9f;
+  color: white;
+}
+
+
+mat-toolbar.mat-primary {
+  background: #004a9f;
+  text-align: center;
+  color: #fff;
+}

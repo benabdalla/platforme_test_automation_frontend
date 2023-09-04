@@ -1,8 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Action } from 'src/app/domain/model/Action';
 import Utilisateur from 'src/app/domain/model/Utilisateur';
 import { ActionServiceService } from 'src/app/services/actionServices/action-service.service';
@@ -28,9 +26,12 @@ export class AddactiongenriqueComponent {
   wasFormChanged = false;
   message: string = "Scénario ajouté avec succès";
   constructor(
-    private fb: FormBuilder,private router :Router,
-    public dialog: MatDialog, private snackbarService: MessageAlertService
-    , private employer: EmployerServiceService, private snackbar: MatSnackBar, private serviceAction: ActionServiceService,
+    private fb: FormBuilder,
+    private router: Router,
+    private dialogRef: MatDialogRef<AddactiongenriqueComponent>,
+    private snackbarService: MessageAlertService,
+    private employer: EmployerServiceService,
+    private serviceAction: ActionServiceService,
     private paramertageService: ParametrageServicesService
   ) { }
 
@@ -58,8 +59,8 @@ export class AddactiongenriqueComponent {
       , fgRespReal: ["", [Validators.required]]
       , fgRespSuivi: ["", [Validators.required]]
       , fgRespClot: ["", [Validators.required]]
-      ,siteList: ["", [Validators.required]]
-      ,processusList: ["", [Validators.required]]
+      , siteList: ["", [Validators.required]]
+      , processusList: ["", [Validators.required]]
 
     });
     this.breakpoint = window.innerWidth <= 9000 ? 1 : 2; // Breakpoint observer code
@@ -69,21 +70,21 @@ export class AddactiongenriqueComponent {
     this.employer.getAllEmployer().subscribe((response: Utilisateur[]) => {
       this.employees = response;
       console.log(this.employees);
-      }
+    }
     );
   }
 
   sites(): void {
-    this.paramertageService.sites().subscribe((res:Site[]) => {
-      this.site=res
+    this.paramertageService.sites().subscribe((res: Site[]) => {
+      this.site = res
       console.log(this.site);
 
     })
   }
 
   processusAll(): void {
-    this.paramertageService.processus().subscribe((res:Processus[]) => {
-      this.processus=res
+    this.paramertageService.processus().subscribe((res: Processus[]) => {
+      this.processus = res
       console.log(this.processus);
 
     })
@@ -103,23 +104,23 @@ export class AddactiongenriqueComponent {
     action.filialeRealisation = fromValue.fgRespReal.name;
     action.filialeSuivi = fromValue.fgRespSuivi.name;
     action.filialeCloture = fromValue.fgRespClot.name;
-    action.site=fromValue.siteList
-    action.processus=fromValue.processusList;
-    action.etat=0;
-    action.actSimplifier=0;
+    action.site = fromValue.siteList
+    action.processus = fromValue.processusList;
+    action.etat = 0;
+    action.actSimplifier = 0;
     console.log(action);
 
     this.serviceAction.addAction(action).subscribe(res => {
       console.log(res);
       this.snackbarService.messageSuccess(this.message);
-      this.dialog.closeAll();
+      this.dialogRef.close(res);
     },
-      (error) => {
+      () => {
         this.snackbarService.messageErro("error lors d'ajout");
 
 
       });
-      this.router.navigate(['action']); // Navigate to the 'other' route
+    this.router.navigate(['action']); // Navigate to the 'other' route
 
 
   }
@@ -133,7 +134,7 @@ export class AddactiongenriqueComponent {
     if (this.fromScGenrique.dirty) {
 
     } else {
-      this.dialog.closeAll();
+      this.dialogRef.close();
     }
   }
 
@@ -142,14 +143,6 @@ export class AddactiongenriqueComponent {
     this.breakpoint = event.target.innerWidth <= 600 ? 1 : 2;
   }
 
-  private markAsDirty(group: FormGroup): void {
-    group.markAsDirty();
-    // tslint:disable-next-line:forin
-    for (const i in group.controls) {
-      console.log(group.controls[i].value);
-      group.controls[i].markAsDirty();
-    }
-  }
 
   formChanged() {
     this.wasFormChanged = true;
@@ -158,6 +151,6 @@ export class AddactiongenriqueComponent {
 
   keyword = 'name';
   siteName = 'site';
-  processusName='processus'
+  processusName = 'processus'
 
 }

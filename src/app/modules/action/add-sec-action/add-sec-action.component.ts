@@ -40,10 +40,14 @@ export class AddSecActionComponent implements OnInit {
 
   message: string = "Scénario ajouté avec succès";
   constructor(
-
-    public dialog: MatDialog, private snackbarService: MessageAlertService, private router: Router,
-    private employer: EmployerServiceService, private snackbar: MatSnackBar, private serviceAction: ActionServiceService,
-    private paramertageService: ParametrageServicesService, private fromBuilder: FormBuilder
+    public dialog: MatDialog, 
+    private snackbarService: MessageAlertService,
+     private router: Router,
+    private employer: EmployerServiceService, 
+    private snackbar: MatSnackBar,
+    private serviceAction: ActionServiceService,
+    private paramertageService: ParametrageServicesService,
+    private fromBuilder: FormBuilder
   ) { }
 
   public ngOnInit(): void {
@@ -146,14 +150,14 @@ export class AddSecActionComponent implements OnInit {
     action.filialeCloture = fromValue.fgRespClot.name;
     action.designation = fromValue.designation
     action.description = fromValue.description
-    action.DesiSA = fromValue.Desi_SA
+    action.desiSA = fromValue.Desi_SA
     action.dateSuivi = fromValue.date_suivi
     action.source = fromValue.source
     action.activite = fromValue.activite;
     action.direction = fromValue.direction;
     action.service = fromValue.service;
-    action.site=fromValue.siteList
-    action.processus=fromValue.processusList;
+    action.site = fromValue.siteList
+    action.processus = fromValue.processusList;
     action.gravite = fromValue.gravite
     action.priorite = fromValue.priorite
     action.typeAction = fromValue.typeAction
@@ -162,24 +166,19 @@ export class AddSecActionComponent implements OnInit {
     action.tauxSuivi = fromValue.taux_suivi
     action.dateCreation = fromValue.date_création
     action.produit = fromValue.produit
-    action.etat=1;
-    action.actSimplifier=0;
+    action.etat = 1;
+    action.actSimplifier = 0;
     // action.run: boolean=false    
     console.log(action);
 
     this.serviceAction.addAction(action).subscribe(res => {
-      console.log(res);
       this.snackbarService.messageSuccess(this.message);
-      this.dialog.closeAll();
+      this.router.navigate(['action']);
     },
       (error) => {
         this.snackbarService.messageErro("error lors d'ajout");
-
-
       });
-    this.router.navigate(['action']); // Navigate to the 'other' route
-
-
+   // Navigate to the 'other' route
   }
 
 
@@ -243,8 +242,6 @@ export class AddSecActionComponent implements OnInit {
       this.activite = res;
     });
   }
-
-
 }
 
 

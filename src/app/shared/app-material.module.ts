@@ -40,6 +40,8 @@ import {MatRippleModule} from '@angular/material/core';
 //import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from '../app-routing.module';
+import { ConfirmationDialogComponentComponent } from './confirmation-dialog-component/confirmation-dialog-component.component';
+import { DialogNoutFoundComponent } from './dialog-nout-found/dialog-nout-found.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -115,6 +117,10 @@ import { AppRoutingModule } from '../app-routing.module';
     MatSortModule,
     MatPaginatorModule,
     MatRippleModule
+  ],
+  declarations: [
+    ConfirmationDialogComponentComponent,
+    DialogNoutFoundComponent
   ]
 })
 export class AppMaterialModule { }

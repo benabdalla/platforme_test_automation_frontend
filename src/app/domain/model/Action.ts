@@ -26,7 +26,7 @@ export class Action {
     activite!: Activite
     direction!: Direction
     service!: TabService
-    DesiSA!: string
+    desiSA!: string
     dateRealisation!: string
     tauxRealisation!: string
     dateSuivi!: string

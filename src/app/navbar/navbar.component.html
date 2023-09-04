@@ -39,7 +39,7 @@
     src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
 
   <img id="profile-img" class="avatar2" width="9%" height="50%" *ngIf="isLoggedIn && admin"
-    src="https://scontent.ftun15-1.fna.fbcdn.net/v/t1.6435-9/67715976_145409353324287_2056318852563730432_n.jpg?_nc_cat=108&cb=99be929b-59f725be&ccb=1-7&_nc_sid=174925&_nc_ohc=iVKWmO-xyS0AX-qdqxO&_nc_ht=scontent.ftun15-1.fna&oh=00_AfCxP4djMiDagTHmsM_oreMpmf2eqhxAe2MwJF071bx4dA&oe=64CE6BFF" />
+    src="https://scontent.ftun10-1.fna.fbcdn.net/v/t1.6435-9/67715976_145409353324287_2056318852563730432_n.jpg?_nc_cat=108&cb=99be929b-59f725be&ccb=1-7&_nc_sid=7a1959&_nc_ohc=pkgzu-BK6hIAX9pKt5P&_nc_ht=scontent.ftun10-1.fna&oh=00_AfBPfG9JrSSKfekBgmf4PAioPexQANFQDtIBQqfLs9zkJw&oe=64FE1A3F" />
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -48,7 +48,7 @@
       src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
 
     <img class="avatar mat-elevation-z8" *ngIf="isLoggedIn && admin" width="9%" height="90%"
-      src="https://scontent.ftun15-1.fna.fbcdn.net/v/t1.6435-9/67715976_145409353324287_2056318852563730432_n.jpg?_nc_cat=108&cb=99be929b-59f725be&ccb=1-7&_nc_sid=174925&_nc_ohc=iVKWmO-xyS0AX-qdqxO&_nc_ht=scontent.ftun15-1.fna&oh=00_AfCxP4djMiDagTHmsM_oreMpmf2eqhxAe2MwJF071bx4dA&oe=64CE6BFF" />
+      src="https://scontent.ftun10-1.fna.fbcdn.net/v/t1.6435-9/67715976_145409353324287_2056318852563730432_n.jpg?_nc_cat=108&cb=99be929b-59f725be&ccb=1-7&_nc_sid=7a1959&_nc_ohc=pkgzu-BK6hIAX9pKt5P&_nc_ht=scontent.ftun10-1.fna&oh=00_AfBPfG9JrSSKfekBgmf4PAioPexQANFQDtIBQqfLs9zkJw&oe=64FE1A3F" />
 
     <h4 class="name">{{ username }}</h4>
     <p class="designation">{{ role }}</p>
@@ -56,10 +56,10 @@
     <mat-divider></mat-divider>
 
 
-    <mat-expansion-panel [class.mat-elevation-z0]="true">
+    <mat-expansion-panel [class.mat-elevation-z0]="false">
       <mat-expansion-panel-header>
 
-        <button mat-button class="menu-button" routerLink="/help">
+        <button mat-button class="menu-button">
           <mat-icon>settings</mat-icon>
           <span>Parametrage</span>
         </button>
@@ -73,30 +73,30 @@
         </mat-list-item>
 
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/">
+          <button mat-button class="menu-button" (click)="onClickNavigate('site')">
             <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Site</span>
           </button>
 
         </mat-list-item>
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/">
+          <button mat-button class="menu-button" (click)="onClickNavigate('processus')">
             <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Processus</span> </button>
 
         </mat-list-item>
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/">
+          <button mat-button class="menu-button" (click)="onClickNavigate('activite')">
             <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Activite</span>
           </button>
 
         </mat-list-item>
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/">
+          <button mat-button class="menu-button" (click)="onClickNavigate('direction')">
             <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Direction</span>
           </button>
 
         </mat-list-item>
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/">
+          <button mat-button class="menu-button" (click)="onClickNavigate('service')">
             <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Service</span>
           </button>
 
@@ -115,10 +115,10 @@
 
 
 
-    <mat-expansion-panel [class.mat-elevation-z0]="true">
+    <mat-expansion-panel [class.mat-elevation-z0]="false">
       <mat-expansion-panel-header>
 
-        <button mat-button class="menu-button" routerLink="/help">
+        <button mat-button class="menu-button">
           <mat-icon>dns</mat-icon>
           <span>Action Details</span>
         </button>
@@ -150,17 +150,17 @@
 
 
 
-    <mat-expansion-panel [class.mat-elevation-z0]="true">
+    <mat-expansion-panel [class.mat-elevation-z0]="false">
       <mat-expansion-panel-header>
 
-        <button mat-button class="menu-button" routerLink="/help">
+        <button mat-button class="menu-button">
           <mat-icon>dns</mat-icon>
           <span>Action Simplifier</span>
         </button>
       </mat-expansion-panel-header>
       <mat-nav-list>
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/action">
+          <button mat-button class="menu-button" routerLink="/actSimplifier">
             <mat-icon>dns</mat-icon>
             <span>Action Simplifier</span>
           </button>
@@ -168,8 +168,62 @@
         </mat-list-item>
 
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/reportaction">
+          <button mat-button class="menu-button" routerLink="/report/action/simplifier">
             <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Action Simplifier</span>
+          </button>
+
+        </mat-list-item>
+
+      </mat-nav-list>
+    </mat-expansion-panel>
+    <mat-divider></mat-divider>
+    <mat-expansion-panel [class.mat-elevation-z0]="false">
+      <mat-expansion-panel-header>
+
+        <button mat-button class="menu-button">
+          <mat-icon>dns</mat-icon>
+          <span>Demande Action </span>
+        </button>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/demande/action">
+            <mat-icon>dns</mat-icon>
+            <span>Demande Action</span>
+          </button>
+
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/report/demande/action">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Demande Action</span>
+          </button>
+
+        </mat-list-item>
+
+      </mat-nav-list>
+    </mat-expansion-panel>
+    <mat-divider></mat-divider>
+    <mat-expansion-panel [class.mat-elevation-z0]="false">
+      <mat-expansion-panel-header>
+
+        <button mat-button class="menu-button">
+          <mat-icon >access_time</mat-icon>
+          <span>Meeting </span>
+        </button>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/reunion">
+            <mat-icon >access_time</mat-icon>
+            <span>Meeting</span>
+          </button>
+
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="reunion/report">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Meeting report</span>
           </button>
 
         </mat-list-item>
@@ -178,12 +232,39 @@
     </mat-expansion-panel>
 
 
+
+
+
+    <mat-divider></mat-divider>
+    <mat-expansion-panel [class.mat-elevation-z0]="false">
+      <mat-expansion-panel-header>
+
+        <button mat-button class="menu-button">
+          <mat-icon> bar_chart</mat-icon>
+          <span>Indicateur </span>
+        </button>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/demande/action">
+            <mat-icon> bar_chart</mat-icon>
+            <span>Indicateur</span>
+          </button>
+
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-button class="menu-button" routerLink="/report/demande/action">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Indicateurs</span>
+          </button>
+
+        </mat-list-item>
+
+      </mat-nav-list>
+    </mat-expansion-panel>
+
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/help">
-      <mat-icon>help</mat-icon>
-      <span>documentation</span>
-    </button>
 
 
 

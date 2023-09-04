@@ -8,7 +8,7 @@ export class MessageAlertService {
 
   constructor(private snackbar:MatSnackBar) { }
 messageSuccess(message:string):void{
-  this.snackbar.open(message, 'ok', { duration: 2000, verticalPosition: 'top', horizontalPosition: 'center', panelClass: 'success-snackbar',
+  this.snackbar.open(message, 'ok', { duration: 5000, verticalPosition: 'top', horizontalPosition: 'center', panelClass: 'success-snackbar',
 });
 
 }

@@ -13,16 +13,36 @@ import { BoardUserComponent } from './authentification/board-user/board-user.com
 import { LoginComponent } from './authentification/login/login.component';
 import { ProfileComponent } from './authentification/profile/profile.component';
 import { RegisterComponent } from './authentification/register/register.component';
+import { RapportComponent } from './parametrage/rapport/rapport.component';
+import { IsSignedInGuard } from './shared/is-user-connected.guard';
+import { ActSimplifierReportComponent } from './modules/action-simplifier/act-simplifier-report/act-simplifier-report.component';
+import { DemandeAtionComponent } from './modules/demande-action/demande-ation.component';
+import { ReportScenarioComponent } from './modules/demande-action/report-scenario/report-scenario.component';
+import { ReunionComponent } from './modules/reunion/reunion.component';
+import { ReunionReportComponent } from './modules/reunion/reunion-report/reunion-report.component';
 
-const routes: Routes = [{ path: "action", component: ActionComponent }, { path: "reportaction", component: ReporatActionComponent },
-{ path: "scsepcifique", component: AddSecActionComponent }, { path: "actSimplifier", component: ActionactionSimplifierComponent }, { path: "scsepcifiqueActSimplifer", component: ActSimplifierSepecifiqueComponent },
-{ path: "reportactionSimplier", component: AuditComponent }, { path: "prametrage", component: ParametrageComponent }
-,  { path: 'home', component: HomeComponent },
-{ path: 'login', component: LoginComponent },
-{ path: 'register', component: RegisterComponent },
-{ path: 'profile', component: ProfileComponent },
-{ path: 'user', component: BoardUserComponent },
-{ path: '', redirectTo: 'home', pathMatch: 'full' }
+const routes: Routes = [
+  { path: "action", component: ActionComponent, canActivate: [IsSignedInGuard]},
+  { path: "reportaction", component: ReporatActionComponent, canActivate: [IsSignedInGuard] },
+  { path: "scsepcifique", component: AddSecActionComponent,canActivate: [IsSignedInGuard] },
+  { path: "actSimplifier", component: ActionactionSimplifierComponent,canActivate: [IsSignedInGuard] },
+  { path: "scsepcifiqueActSimplifer", component: ActSimplifierSepecifiqueComponent ,canActivate: [IsSignedInGuard]},
+  { path: "reportactionSimplier", component: AuditComponent ,canActivate: [IsSignedInGuard]},
+  { path: "prametrage", component: ParametrageComponent ,canActivate: [IsSignedInGuard]},
+  { path: 'home', component: HomeComponent ,canActivate: [IsSignedInGuard]},
+  { path: 'report/action/simplifier', component: ActSimplifierReportComponent ,canActivate: [IsSignedInGuard]},
+  
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent,canActivate: [IsSignedInGuard]},
+  { path: 'user', component: BoardUserComponent,canActivate: [IsSignedInGuard] },
+  { path: 'parametrage/rapport/:name', component: RapportComponent ,canActivate: [IsSignedInGuard]},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'demande/action', component: DemandeAtionComponent,canActivate: [IsSignedInGuard]},
+  { path: 'report/demande/action', component: ReportScenarioComponent ,canActivate: [IsSignedInGuard]},
+  { path: 'reunion', component: ReunionComponent ,canActivate: [IsSignedInGuard]},
+  { path: 'reunion/report', component: ReunionReportComponent ,canActivate: [IsSignedInGuard]}
+  
 ]
 
 @NgModule({

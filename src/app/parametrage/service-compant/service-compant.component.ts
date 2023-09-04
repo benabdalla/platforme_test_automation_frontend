@@ -10,6 +10,11 @@ import { ParametrageServicesService } from 'src/app/services/parametrage/paramet
 import { SpinirLoadService } from 'src/app/shared/spinir-load.service';
 import { AddParametrageComponent } from '../add-parametrage/add-parametrage.component';
 import { ScenarioServiceDto } from 'src/app/domain/model/ScenarioService';
+import { ActionServiceService } from 'src/app/services/actionServices/action-service.service';
+import { ExcutionScenarioParametrageService } from 'src/app/services/parametrage/excution-scenario-parametrage.service';
+import { MessageAlertService } from 'src/app/shared/message-alert.service';
+import { TokenStorageService } from 'src/app/authentification/_services/token-storage.service';
+import { UserService } from 'src/app/authentification/_services/user.service';
 
 @Component({
   selector: 'app-service-compant',
@@ -29,13 +34,60 @@ export class ServiceCompantComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  isLoading = true;
 
-  constructor(private router: Router, public dialog: MatDialog, private serviceParamter: ParametrageServicesService, spinnerService: SpinirLoadService) {
+
+  currentUser: any;
+  role!:boolean;
+  constructor(private token: TokenStorageService,private userService:UserService,private serviceAction :ActionServiceService ,private toast:MessageAlertService,private excuteScenrio:ExcutionScenarioParametrageService ,private router: Router, public dialog: MatDialog, private serviceParamter: ParametrageServicesService, spinnerService: SpinirLoadService) {
     // Create 100 users
     this.loadData()
+    console.log(this.token.getUser)
+    this.currentUser = this.token.getUser();
+this.userService.getEmployee(this.currentUser.id).subscribe((res)=>{
+  this.currentUser=res;
+
+});
+console.log(this.currentUser);
+this.role=this.currentUser.roles[0]=="ADMIN";
+  
   }
-   
+  
+
+    isLoading = true;
+    isLoading2=false;
+  
+  
+    closeScenario(idScenario:number):void{
+      this.toast.messageSuccess("scénario d'arrêt")
+  
+      console.log(idScenario)
+      this.serviceAction.closeScenario(idScenario).subscribe(
+        res=>{
+          console.log(res)
+        }
+      );
+    
+    }
+  runScenario(id:number){   
+     this.isLoading2 = true;
+  
+     this.toast.messageSuccess("Scénario prêt")
+  this.excuteScenrio.runSenarioService(id).subscribe(
+    (res) => {
+      console.log(res);
+     
+    if(res=="ok"){
+      
+      
+      this.isLoading2 = false
+    }
+  
+      
+    },
+      (error) => this.isLoading2 = false
+    );
+  
+    }
 
 
   // Assign the data to the data source for the table to render

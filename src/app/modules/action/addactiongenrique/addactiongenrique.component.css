@@ -1,23 +1,11 @@
-
- /* custom-snackbar.css */
-.custom-snackbar {
-    background-color: #03e95b;/* Replace with your desired color */
-    color: white; /* Replace with the desired text color */
-  }
-  s
-.size-col{
-    width: 80%;
+.line{
+  display: inline!important;
 }
-mat-form-field{
-display: flex;
-flex-direction: column;
-width: 148px;
-height: 70px;
-position: relative;
-left: 200px;
-top: 20px;
-
-
+.custom-card {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  padding: 16px;
+  width: 100%;
 }
-ng-autocomplete {
-  width: 390px;}

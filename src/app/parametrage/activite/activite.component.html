@@ -17,7 +17,7 @@
           </div>
           <div   fxFlex="50" fxLayoutAlign="end">
     
-          <button mat-raised-button (click)="openDialogadd()" style="background-color: rgb(55, 163, 55);color: white;    height: 60%; width: 70%;" class="success">Ajouter</button>
+          <button *ngIf="role" mat-raised-button (click)="openDialogadd()" style="background-color: rgb(55, 163, 55);color: white;    height: 60%; width: 70%;" class="success">Ajouter</button>
           </div>
     </div>
         </div>
@@ -62,14 +62,18 @@
               
               <ng-container matColumnDef="....">
                 <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-                <mat-cell *matCellDef="let row" fxLayout="row"  style="overflow:visible;">
-                    <mat-icon>play_arrow</mat-icon>
-                    <mat-icon style="color:rgb(238, 65, 65)">stop</mat-icon>
+                <mat-cell *matCellDef="let row" fxLayout="row"  style="overflow:visible;" >
+                  <mat-icon  style="overflow:visible;" *ngIf="!isLoading2" (click)="runScenario(row.idScenarioActivite)"> play_arrow</mat-icon>
+                  
+                   <mat-icon *ngIf="isLoading2" (click)="closeScenario(row.idScenarioActivite)" style="overflow:visible;color:rgb(238, 65, 65)" >stop</mat-icon>
+              
+                  <mat-icon *ngIf="!isLoading2 && role"  style="overflow:visible;color:#da4518" (click)="deleteScenario(row.idScenarioActivite)"> delete</mat-icon>
     
-                    
-                    <mat-icon style="color:#da4518" (click)="deleteScenario(row.idScenarioActivite)"> delete</mat-icon>
-      
-                </mat-cell>
+                  <div *ngIf="isLoading2" style="display: flex; justify-content: center; align-items: center; background: white;">
+                    <mat-progress-spinner style="width: 20px;height: 20px;" color="primary" mode="indeterminate">
+                    </mat-progress-spinner>
+                  </div>
+              </mat-cell>
               </ng-container>
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;">

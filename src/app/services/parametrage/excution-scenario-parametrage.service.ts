@@ -16,5 +16,22 @@ export class ExcutionScenarioParametrageService {
     const apiUrl = `${this.url}api/v3/paremetrage/find/scenariosite/${id}`;
     return this.http.get<string>(apiUrl);
   }
+
+  public runSenarioProcessus(id: number): Observable<string> {
+    const apiUrl = `${this.url}api/v3/paremetrage/find/scenarioprocessus/${id}`;
+    return this.http.get<string>(apiUrl);
+  }
+  public runSenarioDirection(id: number): Observable<string> {
+    const apiUrl = `${this.url}api/v3/paremetrage/find/scenariodirection/${id}`;
+    return this.http.get<string>(apiUrl);
+  }
+  public runSenarioActivite(id: number): Observable<string> {
+    const apiUrl = `${this.url}api/v3/paremetrage/find/scenarioActivite/${id}`;
+    return this.http.get<string>(apiUrl);
+  }
+  public runSenarioService(id: number): Observable<string> {
+    const apiUrl = `${this.url}api/v3/paremetrage/find/scenarioservice/${id}`;
+    return this.http.get<string>(apiUrl);
+  }
   
 }

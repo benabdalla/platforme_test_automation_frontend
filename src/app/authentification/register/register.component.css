@@ -30,3 +30,19 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+#image-bg{
+  background-image: url("../../../assets/img/pic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+}
+.image-bg{
+  background-image: url("../../../assets/img/pic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  
+}

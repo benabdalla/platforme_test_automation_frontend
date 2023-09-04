@@ -70,6 +70,7 @@ export class EditPrametrageComponent {
       this.router.navigate(['prametrage']);
 
       this.snackbarService.messageSuccess('User updated successfully')
+
     },
     (error) => {
       console.error('Error updating user:', error);
@@ -77,7 +78,7 @@ export class EditPrametrageComponent {
       this.snackbarService.messageErro('Error updating user')
     }
   );
-
+ this.dialogRef.close({data:"ok"});
   }
 
 

@@ -8,10 +8,10 @@ import { Employee } from '../../_services/employee';
   styleUrls: ['./modal-edit-user.component.css'],
 })
 export class ModalEditUserComponent {
-  editEmployee: Employee;
+  editEmployee: any;
   constructor(
     public dialogRef: MatDialogRef<ModalEditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Employee
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.editEmployee = data;
   }

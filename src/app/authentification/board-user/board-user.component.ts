@@ -15,9 +15,9 @@ import { ModalRemoveUserComponent } from './modal-remove-user/modal-remove-user.
 })
 export class BoardUserComponent implements OnInit {
   content?: string;
-  public employees?: Employee[];
-  public editEmployee?: Employee;
-  public deleteEmployee?: Employee;
+  public employees?: any[];
+  public editEmployee?: any;
+  public deleteEmployee?: any;
   constructor(private userService: UserService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class BoardUserComponent implements OnInit {
 
   public getEmployees(): void {
     this.userService.getEmployees().subscribe(
-      (response: Employee[]) => {
+      (response: any[]) => {
         this.employees = response;
         console.log(this.employees);
       },
@@ -36,9 +36,10 @@ export class BoardUserComponent implements OnInit {
     );
   }
 
-  public onUpdateEmloyee(employee: Employee): void {
+  public onUpdateEmloyee(employee: any): void {
+    console.log(employee);
     this.userService.updateEmployee(employee).subscribe(
-      (response: Employee) => {
+      (response: any) => {
         console.log(response);
         this.getEmployees();
       },
@@ -65,7 +66,7 @@ export class BoardUserComponent implements OnInit {
     const results: Employee[] = [];
     for (const employee of this.employees!) {
       if (
-        employee.name.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        employee.username.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         employee.email.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         employee.phone.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         employee.jobTitle.toLowerCase().indexOf(key.toLowerCase()) !== -1
@@ -79,7 +80,7 @@ export class BoardUserComponent implements OnInit {
     }
   }
 
-  public onOpenModal(employee: Employee, mode: string): void {
+  public onOpenModal(employee: any, mode: string): void {
     if (mode === 'add') {
       this.openDialog();
     }
@@ -100,7 +101,7 @@ export class BoardUserComponent implements OnInit {
     });
   }
 
-  openDialogEdit(employee: Employee): void {
+  openDialogEdit(employee: any): void {
     const dialogRef = this.dialog.open(ModalEditUserComponent, {
       data: {...employee},
     });
@@ -110,7 +111,7 @@ export class BoardUserComponent implements OnInit {
       this.onUpdateEmloyee(result);
     });
   }
-  openDialogDellet(employee: Employee): void {
+  openDialogDellet(employee: any): void {
     const dialogRef = this.dialog.open(ModalRemoveUserComponent, {
       data: employee,
     });
@@ -120,10 +121,10 @@ export class BoardUserComponent implements OnInit {
       this.onDeleteEmloyee(result);
     });
   }
-  public onAddEmloyee(employee: Employee): void {
+  public onAddEmloyee(employee: any): void {
     document.getElementById('add-employee-form')?.click();
     this.userService.addEmployee(employee).subscribe(
-      (response: Employee) => {
+      (response: any) => {
         console.log(response);
         this.getEmployees();
       },

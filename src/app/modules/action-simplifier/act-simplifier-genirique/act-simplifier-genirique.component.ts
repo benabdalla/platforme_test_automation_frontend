@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Action } from 'src/app/domain/model/Action';
 import Utilisateur from 'src/app/domain/model/Utilisateur';
@@ -12,6 +12,7 @@ import { ParametrageServicesService } from 'src/app/services/parametrage/paramet
 import { Site } from 'src/app/domain/model/Site';
 import { Processus } from 'src/app/domain/model/Processus';
 import { Router } from '@angular/router';
+import { ActionactionSimplifierComponent } from '../actionaction-simplifier.component';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class ActSimplifierGeniriqueComponent {
     wasFormChanged = false;
     message: string = "Scénario ajouté avec succès";
     constructor(
-      private fb: FormBuilder,private router :Router,
+      private fb: FormBuilder,private router :Router,private dialogRef: MatDialogRef<ActionactionSimplifierComponent>,
+
       public dialog: MatDialog, private snackbarService: MessageAlertService
       , private employer: EmployerServiceService, private snackbar: MatSnackBar, private serviceAction: ActionServiceService,
       private paramertageService: ParametrageServicesService
@@ -112,16 +114,18 @@ export class ActSimplifierGeniriqueComponent {
       action.actSimplifier=1;
       console.log(action);
   
+ 
       this.serviceAction.addAction(action).subscribe(res => {
         console.log(res);
         this.snackbarService.messageSuccess(this.message);
-        this.dialog.closeAll();
+        this.dialogRef.close(res);
       },
-        (error) => {
+        () => {
           this.snackbarService.messageErro("error lors d'ajout");
   
   
         });
+     
         this.router.navigate(['actSimplifier']); // Navigate to the 'other' route
   
   

@@ -1,23 +1,29 @@
 <div>
-    <div class="add-title">
-      <mat-toolbar class="toolbar-color py-4 mb-4">
-        <div fxFlex fxLayout fxLayoutAlign="space-around center">
-          <h3>Scénario  Action Simplifier </h3>
-        </div>
-  
-      </mat-toolbar>
-    </div>
-    <div>
-  
-      <form [formGroup]="fromScGenrique" (change)="formChanged()">
-        <div fxLayout="row wrap" fxFlex fxLayoutGap="180px">
-          <div fxFlex="calc(50% - 80px)" class="m-1 pt-3">
+  <div class="add-title">
+    <mat-toolbar class="toolbar-color py-4 mb-4">
+      <div fxFlex fxLayout fxLayoutAlign="space-around center">
+        <h1>Scénario  Action Simplifier</h1>
+      </div>
+
+    </mat-toolbar>
+  </div>
+  <div>
+
+    <form [formGroup]="fromScGenrique" (change)="formChanged()" class="line">
+
+      <mat-card class="custom-card">
+
+        <div fxLayout="row" ffxLayoutAlign="center center">
+
+
+
+          <div fxFlex="70"  class="action-blurb" fxFlexOffset="5">
             <strong> Déchlencheur :</strong>
             <ng-template #notFoundTemplate let-notFound>
               <div [innerHTML]="notFound"></div>
             </ng-template>
   
-            <div class="ng-autocomplete size-col">
+            <div class="ng-autocomplete">
               <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Déchlencheur"
                 historyIdentifier="employees1" [itemTemplate]="itemTemplate2" [notFoundTemplate]="notFoundTemplate"
                 formControlName="declencheur">
@@ -39,29 +45,34 @@
               </ng-template>
             </div>
           </div>
-          <div fxFlex="calc(50% - 80px)" class="m-1 pt-3">
-            <mat-form-field>
-              <mat-label>Filiale</mat-label>
-              <mat-select formControlName="fgDeclencheur" required>
-                <mat-option>--</mat-option>
-                <mat-option *ngFor="let f of fg" [value]="f">
-                  {{f.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
-              <mat-hint>{{fgControl.value?.name}}</mat-hint>
-            </mat-form-field>
-          </div>
-          
+   
   
-          <div fxFlex="calc(50% - 80px)" class="m-1 pt-3">
+        <div fxFlex="30"  class="action-blurb" fxFlexOffset="5">
+          <mat-form-field>
+            <mat-label>Filiale</mat-label>
+            <mat-select formControlName="fgDeclencheur" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let f of fg" [value]="f">
+                {{f.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fromScGenrique.hasError('required')">Veuillez choisir un filiale</mat-error>
+            <mat-hint>{{fromScGenrique.value?.name}}</mat-hint>
+          </mat-form-field>
+        </div>
+        </div>
+        <div fxLayout="row" ffxLayoutAlign="center center">
+
+
+
+          <div fxFlex="70"  class="action-blurb" fxFlexOffset="5">
             <strong>Responsable de réalisation :</strong>
             <div class="text-inside">
               <ng-template #notFoundTemplate let-notFound>
                 <div [innerHTML]="notFound"></div>
               </ng-template>
             </div>
-            <div class="ng-autocomplete size-col">
+            <div class="ng-autocomplete ">
               <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Responsable de réalisation"
                 historyIdentifier="employees2" [itemTemplate]="itemTemplate3" [notFoundTemplate]="notFoundTemplate"
                 formControlName="respoReal">
@@ -82,184 +93,221 @@
                 <div [innerHTML]="notFound"></div>
               </ng-template>
             </div>
-  
           </div>
   
-          <div fxFlex="calc(50% - 80px)" class="m-1 pt-3">
-            <mat-form-field>
-              <mat-label>Filiale</mat-label>
-              <mat-select formControlName="fgRespReal"  required>
-                <mat-option>--</mat-option>
-                <mat-option *ngFor="let f of fg" [value]="f">
-                  {{f.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
-              <mat-hint>{{fgControl.value?.name}}</mat-hint>
-            </mat-form-field>
-          </div>
-          <div fxFlex="calc(50% - 80px)" class="m-1 pt-3">
-            <strong>Responsable de suivi :</strong>
-            <div class="text-inside">
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-            </div>
-            <div class="ng-autocomplete size-col">
-              <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Responsable de suivi"
-                historyIdentifier="employees3" [itemTemplate]="itemTemplate4" [notFoundTemplate]="notFoundTemplate"
-                formControlName="respoSuiv">
-              </ng-autocomplete>
+            <div fxFlex="30"  class="action-blurb" fxFlexOffset="5">
+              <mat-form-field>
+                <mat-label>Filiale</mat-label>
+                <mat-select formControlName="fgRespReal"  required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let f of fg" [value]="f">
+                    {{f.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="fromScGenrique.hasError('required')">Veuillez choisir un filiale</mat-error>
+                <mat-hint>{{fromScGenrique.value?.name}}</mat-hint>
+              </mat-form-field>
+              </div>
+              </div>
   
-              <ng-template #itemTemplate4 let-item>
-                <div class="item">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
-                    height="35">
-                  <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
-                  <em>matriculer : {{item.idUser}}</em>
   
+              <div fxLayout="row" ffxLayoutAlign="center center">
+
+
+
+                <div fxFlex="70"  class="action-blurb" fxFlexOffset="5">
+                  <strong>Responsable de suivi :</strong>
+                  <div class="text-inside">
+                    <ng-template #notFoundTemplate let-notFound>
+                      <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                  </div>
+                  <div class="ng-autocomplete ">
+                    <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Responsable de suivi"
+                      historyIdentifier="employees3" [itemTemplate]="itemTemplate4" [notFoundTemplate]="notFoundTemplate"
+                      formControlName="respoSuiv">
+                    </ng-autocomplete>
+        
+                    <ng-template #itemTemplate4 let-item>
+                      <div class="item">
+                        <img
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                          height="35">
+                        <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                        <em>matriculer : {{item.idUser}}</em>
+        
+                      </div>
+                    </ng-template>
+        
+                    <ng-template #notFoundTemplate let-notFound>
+                      <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div></div>
+        
+
+
+
+                  <div fxFlex="30"  class="action-blurb" fxFlexOffset="5">
+                    <mat-form-field>
+                      <mat-label>Filiale</mat-label>
+                      <mat-select  formControlName="fgRespSuivi" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let f of fg" [value]="f">
+                          {{f.name}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="fromScGenrique.hasError('required')">Veuillez choisir un filiale</mat-error>
+                      <mat-hint>{{fromScGenrique.value?.name}}</mat-hint>
+                    </mat-form-field>
+                    </div>
                 </div>
-              </ng-template>
   
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-            </div>
-  
-          </div>
-          <div fxFlex="calc(50% - 80px)" class="m-1 pt-3">
-            <mat-form-field>
-              <mat-label>Filiale</mat-label>
-              <mat-select  formControlName="fgRespSuivi" required>
-                <mat-option>--</mat-option>
-                <mat-option *ngFor="let f of fg" [value]="f">
-                  {{f.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
-              <mat-hint>{{fgControl.value?.name}}</mat-hint>
-            </mat-form-field>
-          </div>
-          <div fxFlex="calc(50% - 80px)" class="m-1 pt-3">
-            <strong>Responsable de clôture :</strong>
-            <div class="text-inside">
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-            </div>
-            <div class="ng-autocomplete size-col">
-              <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Responsable de clôture"
-                historyIdentifier="employees4" [itemTemplate]="itemTemplate5" [notFoundTemplate]="notFoundTemplate"
-                formControlName="respcloture">
-              </ng-autocomplete>
-  
-              <ng-template #itemTemplate5 let-item>
-                <div class="item">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
-                    height="35">
-                  <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
-                  <em>matriculer : {{item.idUser}}</em>
-  
-                </div>
-              </ng-template>
-  
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-            </div>
-  
-          </div>
-          <div fxFlex="calc(50% - 80px)" class="m-1 pt-3">
-            <mat-form-field>
-              <mat-label>Filiale</mat-label>
-              <mat-select  formControlName="fgRespClot" required>
-                <mat-option>--</mat-option>
-                <mat-option *ngFor="let f of fg" [value]="f">
-                  {{f.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
-              <mat-hint>{{fgControl.value?.name}}</mat-hint>
-            </mat-form-field>
-          </div>
-  
-  
-          <div fxFlex="calc(30% - 10px)" class="m-1 pt-3">
-            <strong>Site :</strong>
-            <div class="text-inside">
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-            </div>
-            <div class="">
-              <ng-autocomplete [data]="site" [searchKeyword]="siteName" placeholder="Site"
-                historyIdentifier="siteliste1" [itemTemplate]="itemTemplate7" [notFoundTemplate]="notFoundTemplate"
-                formControlName="siteList">
-              </ng-autocomplete>
-  
-              <ng-template #itemTemplate7 let-item>
-                <div class="item">
-                  <Strong [innerHTML]="item.site"></Strong> &nbsp; | &nbsp;
-                  <em>Numéro : {{item.idSite}}</em>
-  
-                </div>
-              </ng-template>
-  
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-            </div>
-  
-          </div>
-          <div fxFlex="calc(50% - 10px)" class="m-1 pt-3">
-            <strong>Processus :</strong>
-            <div class="text-inside">
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-            </div>
-            <div class="">
-              <ng-autocomplete [data]="processus" [searchKeyword]="processusName" placeholder="Processus"
-                historyIdentifier="processusList1" [itemTemplate]="itemTemplate6" [notFoundTemplate]="notFoundTemplate"
-                formControlName="processusList">
-              </ng-autocomplete>
-  
-              <ng-template #itemTemplate6 let-item>
-                <div class="item">
-                  <Strong [innerHTML]="item.processus"></Strong> &nbsp; | &nbsp;
-                  <em>Numéro : {{item.idProcessus}}</em>
-  
-                </div>
-              </ng-template>
-  
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-          </div>
-          </div>
-          <div class="btn-sec" fxLayoutAlign="space-around center" fxFlex="calc(50% - 80px)" class="m-1 pt-3">
-  
-            <button mat-raised-button type="submit"  color="primary" class="Update-btn" [disabled]="fromScGenrique.invalid" (click)="onAddScenario()">
-              <mat-icon>add</mat-icon>
-              Ajouter
-            </button>
-  
-  <!---->
-  
-            <button mat-raised-button mat-dialog-close type="button" color="warn" class="Discard-btn">
-              <mat-icon>cancel</mat-icon>
-              Annuler</button>
-  
-  
-          </div>
-        </div>
-      </form>
-  
-  
-  
-  
-  
-    </div>
+                <div fxLayout="row" ffxLayoutAlign="center center">
+
+
+
+                  <div fxFlex="70"  class="action-blurb" fxFlexOffset="5">
+                        <strong>Responsable de clôture :</strong>
+                        <div class="text-inside">
+                          <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                          </ng-template>
+                        </div>
+                        <div class="ng-autocomplete ">
+                          <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Responsable de clôture"
+                            historyIdentifier="employees4" [itemTemplate]="itemTemplate5" [notFoundTemplate]="notFoundTemplate"
+                            formControlName="respcloture">
+                          </ng-autocomplete>
+              
+                          <ng-template #itemTemplate5 let-item>
+                            <div class="item">
+                              <img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                                height="35">
+                              <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                              <em>matriculer : {{item.idUser}}</em>
+              
+                            </div>
+                          </ng-template>
+              
+                          <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                          </ng-template>
+                      </div>
+              </div>
+              
+
+
+
+                <div fxFlex="30"  class="action-blurb" fxFlexOffset="5">
+                          <mat-form-field>
+                            <mat-label>Filiale</mat-label>
+                            <mat-select  formControlName="fgRespClot" required>
+                              <mat-option>--</mat-option>
+                              <mat-option *ngFor="let f of fg" [value]="f">
+                                {{f.name}}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="fromScGenrique.hasError('required')">Veuillez choisir un filiale</mat-error>
+                            <mat-hint>{{fromScGenrique.value?.name}}</mat-hint>
+                          </mat-form-field>
+                          </div>
+                      </div>
+                      <div fxLayout="row" ffxLayoutAlign="center center">
+
+
+
+                        <div fxFlex="50"  class="action-blurb" fxFlexOffset="5">
+                              <strong>Site :</strong>
+                              <div class="text-inside">
+                                <ng-template #notFoundTemplate let-notFound>
+                                  <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                              </div>
+                              <div class="">
+                                <ng-autocomplete [data]="site" [searchKeyword]="siteName" placeholder="Site"
+                                  historyIdentifier="siteliste1" [itemTemplate]="itemTemplate7" [notFoundTemplate]="notFoundTemplate"
+                                  formControlName="siteList">
+                                </ng-autocomplete>
+                    
+                                <ng-template #itemTemplate7 let-item>
+                                  <div class="item">
+                                    <Strong [innerHTML]="item.site"></Strong> &nbsp; | &nbsp;
+                                    <em>Numéro : {{item.idSite}}</em>
+                    
+                                  </div>
+                                </ng-template>
+                    
+                                <ng-template #notFoundTemplate let-notFound>
+                                  <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                              </div>
+                    
+                    
+                            </div>
+                    
+                    
+
+
+
+                              <div fxFlex="50"  class="action-blurb" fxFlexOffset="5">
+                                <strong>Processus :</strong>
+                                <div class="text-inside">
+                                  <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                  </ng-template>
+                                </div>
+                                <div class="">
+                                  <ng-autocomplete [data]="processus" [searchKeyword]="processusName" placeholder="Processus"
+                                    historyIdentifier="processusList1" [itemTemplate]="itemTemplate6" [notFoundTemplate]="notFoundTemplate"
+                                    formControlName="processusList">
+                                  </ng-autocomplete>
+                      
+                                  <ng-template #itemTemplate6 let-item>
+                                    <div class="item">
+                                      <Strong [innerHTML]="item.processus"></Strong> &nbsp; | &nbsp;
+                                      <em>Numéro : {{item.idProcessus}}</em>
+                      
+                                    </div>
+                                  </ng-template>
+                      
+                                  <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                  </ng-template>
+                                
+                                </div>
+                              </div>
   </div>
+
+
+
+      </mat-card>
+      
+   
+   
+ 
+
+        <div class="btn-sec" fxLayoutAlign="space-around center" fxFlex="calc(50% - 80px)" class="m-1 pt-3">
+
+          <button mat-raised-button type="submit"  color="primary" class="Update-btn" [disabled]="fromScGenrique.invalid" (click)="onAddScenario()">
+            <mat-icon>add</mat-icon>
+            Ajouter
+          </button>
+
+<!---->
+
+          <button mat-raised-button mat-dialog-close type="button" color="warn" class="Discard-btn">
+            <mat-icon>cancel</mat-icon>
+            Annuler</button>
+
+
+        </div>
+    
+    </form>
+
+
+
+
+
+  </div>
+</div>

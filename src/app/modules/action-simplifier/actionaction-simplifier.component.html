@@ -1,7 +1,7 @@
 <mat-toolbar class="toolbar-color py-4 mb-4">
     <div fxFlex fxLayout fxLayoutAlign="space-around center">
-      <button mat-raised-button (click)="openDialog()">Ajouter scénario spécifique </button>
-      <button mat-raised-button (click)="openDialog2()">Ajouter scénario génerique</button>
+      <button mat-raised-button *ngIf="role"  (click)="openDialog()">Ajouter scénario spécifique </button>
+      <button mat-raised-button *ngIf="role"  (click)="openDialog2()">Ajouter scénario génerique</button>
     </div>
   
   </mat-toolbar>
@@ -76,7 +76,7 @@
             </ng-container>
           </mat-cell>
         </ng-container>
-  
+  <!--
         <ng-container matColumnDef="Responsable suivi">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Responsable suivi </mat-header-cell>
           <mat-cell *matCellDef="let row">
@@ -94,29 +94,38 @@
                 {{row.filialeSuivi}}
               </ng-container>
             </mat-cell>
-          </ng-container>
+          </ng-container> 
   
-        </ng-container>
+        </ng-container>-->
         <ng-container matColumnDef="...">
-          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-          <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
-          
-            <mat-icon (click)="runSenarioSimplifier(row.idScenario)"  style="color:rgb(24, 196, 67)">play_arrow</mat-icon>
-            <mat-icon (click)="closeScenario(row.idScenario)" style="color:rgb(238, 65, 65)">stop</mat-icon>
-          </mat-cell>
-        </ng-container>
-  
-  
-        <ng-container matColumnDef="....">
-          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-          <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
-         
+    
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
+            <!--  <button mat-raised-button id="idmat-success" (click)="runScenario(row.idScenario)">Exécuter</button>-->
+              <mat-icon  style="overflow:visible;" *ngIf="!isLoading2" (click)="runSenarioSimplifier(row.idScenario)"> play_arrow</mat-icon>
+    
+            <!--  <button mat-raised-button color="accent" (click)="closeScenario(row.idScenario)">Arrêter</button>-->
+    
+              <mat-icon *ngIf="isLoading2" (click)="closeScenario(row.idScenario)" style="overflow:visible;color:rgb(238, 65, 65)" >stop</mat-icon>
+              <div *ngIf="isLoading2" style="display: flex; justify-content: center; align-items: center; background: white;">
+                <mat-progress-spinner style="width: 20px;height: 20px;" color="primary" mode="indeterminate">
+                </mat-progress-spinner>
+              </div>
+        
+               
+    
+                <button mat-fab class="button-class"  style="color:#189cda" matTooltip="afficher plus"  (click)="openDialogDetails(row.idScenario)" aria-label="Example icon button with a delete icon">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+               
+                <button class="button-class" mat-fab style="color:#ec4848" *ngIf="!isLoading2 && role" matTooltip="supprimers" (click)="deleteSecenario(row.idScenario)" aria-label="Example icon button with a delete icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+    
+            
 
-       
-                <mat-icon    style="color:#189cda" (click)="openDialogDetails(row.idScenario)">remove_red_eye</mat-icon>
 
-                <mat-icon style="color:#da4518"  (click)="deleteSecenario(row.idScenario)"> delete</mat-icon>
-             
+
           </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

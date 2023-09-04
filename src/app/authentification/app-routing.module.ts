@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
+import { IsSignedInGuard } from '../shared/is-user-connected.guard';
 
 
 

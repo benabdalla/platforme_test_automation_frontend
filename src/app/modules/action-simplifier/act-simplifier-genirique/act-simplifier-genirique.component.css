@@ -1,27 +1,22 @@
+.line{
+  display: inline!important;
+}
+.custom-card {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  padding: 16px;
+}
 
- /* custom-snackbar.css */
- .custom-snackbar {
-    background-color: #03e95b;/* Replace with your desired color */
-    color: white; /* Replace with the desired text color */
-  }
-  mat-toolbar.mat-primary {
-    background: #004a9f;
-    text-align: center;
-    color: #fff;
+mat-toolbar {
+  background: #004a9f;
+  color: white;
 }
-.size-col{
-    width: 80%;
-}
-mat-form-field{
-display: flex;
-flex-direction: column;
-width: 148px;
-height: 70px;
-position: relative;
-left: 200px;
-top: 20px;
 
 
+mat-toolbar.mat-primary {
+  background: #004a9f;
+  text-align: center;
+  color: #fff;
 }
-ng-autocomplete {
-  width: 390px;}

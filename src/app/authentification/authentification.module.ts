@@ -17,14 +17,14 @@ import { ModalEditUserComponent } from './board-user/modal-edit-user/modal-edit-
 import { ModalRemoveUserComponent } from './board-user/modal-remove-user/modal-remove-user.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { Authentification2 } from './app.authentification';
 @NgModule({
   declarations: [
   
-    LoginComponent,
+    
     RegisterComponent,
     HomeComponent,
     ProfileComponent,

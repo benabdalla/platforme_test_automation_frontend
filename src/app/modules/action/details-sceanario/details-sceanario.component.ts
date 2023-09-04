@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { Action } from 'src/app/domain/model/Action';
 import { ActionServiceService } from 'src/app/services/actionServices/action-service.service';
 
@@ -155,7 +156,7 @@ export class DetailsSceanarioComponent {
           border: '1px solid #00ce86',
           width: '100%',
           title: 'Désagniation Sous Action',
-          value: this.action.DesiSA
+          value: this.action.desiSA
         },
 
 

@@ -7,24 +7,24 @@
 </div>
 <div class="container" id="main-container">
     <div class="row">
-        <div *ngFor="let employee of employees" class="col-md-6 col-xl-3">
+        <div *ngFor="let employee of employees" class="col-md-6 col-xl-3" >
             <div class="card m-b-30">
                 <div class="card-body row">
                     <div class="col-6">
-                        <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+                        <a href=""><img src="https://e7.pngegg.com/pngimages/348/800/png-clipart-man-wearing-blue-shirt-illustration-computer-icons-avatar-user-login-avatar-blue-child.png" alt="" class="img-fluid rounded-circle w-60"></a>
                     </div>
                     <div class="col-6 card-title align-self-center mb-0">
-                        <h5>{{employee?.name}}</h5>
-                        <p class="m-0">{{employee?.jobTitle}}</p>
+                        <h3> <Strong>Name : </Strong>{{employee?.username}}</h3>
+                        <Strong> Job :</Strong> <p class="m-0">{{employee?.jobTitle}}</p>
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{employee?.email}}</li>
-                    <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{employee?.phone}}</li>
+                    <li class="list-group-item"><i class="fa fa-envelope float-right"></i><Strong>Email: </Strong>{{employee?.email}}</li>
+                    <li class="list-group-item"><i class="fa fa-phone float-right"></i><Strong>Phone : </Strong> {{employee?.phone}}</li>
+                    <li class="list-group-item"><i class="bi bi-person-fill-check float-right"></i><Strong>Role : </Strong>{{employee?.role}}</li>
                 </ul>
                 <div class="card-body">
                     <div class="float-right btn-group btn-group-sm">
-                        <button (click)="onOpenModal(employee, 'add')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Add"><i class="fa fa-pencil"></i>ADD</button>
                         <button (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>EDIT</button>
                         <button (click)="onOpenModal(employee, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="bi bi-trash">Remove</i></button>
                     </div>
