@@ -42,7 +42,7 @@ export class ReunionGenirqueComponent {
   fgControl = new FormControl<any | null>(null, Validators.required);
   selectFormControl = new FormControl('', Validators.required);
   fg: any[] = [
-    { name: 'Mono' },
+    { name: 'MONO' },
     { name: 'Group' },
     { name: 'Filiale 1' },
     { name: 'Filiale 2' },
@@ -85,7 +85,7 @@ export class ReunionGenirqueComponent {
    
     typeReunion.filialeDeclencheur = fromValue.fgDeclencheur.name;
     typeReunion.filialeRealisation = fromValue.fgRespReal.name;
-    reunion.typeReunionDto=typeReunion
+    reunion.typeReunion=typeReunion
 
   
     console.log(reunion);

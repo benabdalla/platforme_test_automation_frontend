@@ -1,0 +1,23 @@
+.line{
+    display: inline!important;
+  }
+  .custom-card {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 16px;
+    padding: 16px;
+  }
+  
+  
+  mat-toolbar {
+    background: #004a9f;
+    color: white;
+  }
+  
+  
+  mat-toolbar.mat-primary {
+    background: #004a9f;
+    text-align: center;
+    color: #fff;
+  }

@@ -1,28 +1,29 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Documentation } from 'src/app/domain/model/Documentation';
 import { Reunion } from 'src/app/domain/model/Reunion';
-import { ReunionServiceService } from 'src/app/services/reunion/reunion-service.service';
+import { DocumentationServiceService } from 'src/app/services/documenatation/documentation-service.service';
 
 @Component({
-  selector: 'app-reunion-details',
-  templateUrl: './reunion-details.component.html',
-  styleUrls: ['./reunion-details.component.css']
+  selector: 'app-details-doc',
+  templateUrl: './details-doc.component.html',
+  styleUrls: ['./details-doc.component.css']
 })
-export class ReunionDetailsComponent {
+export class DetailsDocComponent {
 
 
-  reunion?: Reunion
+  docuemantation?: Documentation
   items?: any[];
   typeScenrio?:string;
-  constructor(private reunionService: ReunionServiceService, public dialogRef: MatDialogRef<ReunionDetailsComponent>,
+  constructor(private docuemnatationService: DocumentationServiceService, public dialogRef: MatDialogRef<DetailsDocComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any // Inject the passed data
   ) {
     console.log(data)
-    this.reunionService.getReunion(data.idScenario).subscribe(res => {
-      this.reunion = res;
+    this.docuemnatationService.getDocumentation(data.idScenario).subscribe(res => {
+      this.docuemantation = res;
       console.log(res) 
-      console.log(this.reunion)
-      if(this.reunion?.etat==1){
+      console.log(this.docuemantation)
+      if(this.docuemantation?.etat==1){
         this.typeScenrio="Spécifique"
       }else{
         this.typeScenrio="Génirique"
@@ -35,15 +36,15 @@ export class ReunionDetailsComponent {
           border: '1px solid #5f7dff',
           width: '100%',
           title: 'N°fiche',
-          value: this.reunion.numFiche
+          value: this.docuemantation.numFiche
         },
         {
           id: 2,
           color: '#00ce86',
           border: '1px solid #00ce86',
           width: '100%',
-          title: 'Order de jour ',
-          value: this.reunion.orderJour
+          title: 'Libélle',
+          value: this.docuemantation.Libelle
         },
 
 
@@ -53,7 +54,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #ec4b53',
           width: '100%',
           title: 'ETat',
-          value: this.reunion.etat
+          value: this.docuemantation.etat
         },
 
         {
@@ -62,7 +63,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #24a8f2',
           width: '100%',
           title: 'ID'
-          , value: this.reunion.idScenario
+          , value: this.docuemantation.idScenario
         },
 
         {
@@ -70,8 +71,8 @@ export class ReunionDetailsComponent {
           color: '#ff7eb7',
           border: '1px solid #ff7eb7',
           width: '100%',
-          title: 'Gravite'
-          , value: this.reunion.datePrevue
+          title: 'Filiale'
+          , value: this.docuemantation.filaileScenario
         },
 
 
@@ -80,8 +81,8 @@ export class ReunionDetailsComponent {
           color: '#44e2e3',
           border: '1px solid #44e2e3',
           width: '100%',
-          title: 'Lieu',
-          value: this.reunion.lieu
+          title: 'Diffusion',
+          value: this.docuemantation.typeDocumentation.responsables_gestion_diffusion
         },
 
         {
@@ -98,8 +99,8 @@ export class ReunionDetailsComponent {
           color: '#00ce86',
           border: '1px solid #00ce86',
           width: '100%',
-          title: 'Déclencheur',
-          value: this.reunion.typeReunion.dechlencheur.name },
+          title: 'Supperviseur',
+          value: this.docuemantation.typeDocumentation.superviseur.name },
 
       
         {
@@ -108,7 +109,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #ec4b53',
           width: '100%',
           title: 'Site',
-        value: this.reunion.site?.site
+        value: this.docuemantation.site?.site
         },
 
 
@@ -120,7 +121,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #24a8f2',
           width: '100%',
           title: 'Processus',
-          value: this.reunion.processus?.processus
+          value: this.docuemantation.processus?.processus
         },
 
 
@@ -129,7 +130,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #ff7eb7',
           width: '100%',
           title: 'Activite'
-          , value: this.reunion.activite?.activite
+          , value: this.docuemantation.activite?.activite
         },
 
 
@@ -140,7 +141,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #44e2e3',
           width: '100%',
           title: 'Direction',
-          value: this.reunion.direction?.direction
+          value: this.docuemantation.direction?.direction
         },
         //=====================================>
         {
@@ -149,7 +150,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #5f7dff',
           width: '100%',
           title: 'Service',
-          value: this.reunion.service?.service
+          value: this.docuemantation.service?.service
         },
         {
           id: 14,
@@ -157,7 +158,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #00ce86',
           width: '100%',
           title: 'Type reunion',
-          value: this.reunion.typeReunion.typeReunion
+          value: this.docuemantation.typeDocumentation.typeDoc
         },
 
 
@@ -166,8 +167,8 @@ export class ReunionDetailsComponent {
           color: '#ec4b53',
           border: '1px solid #ec4b53',
           width: '100%',
-          title: 'Filiale déclencheur',
-          value: this.reunion.typeReunion.filialeDeclencheur
+          title: 'Abrévaition',
+          value: this.docuemantation.typeDocumentation.abreviation
         },
 
         {
@@ -175,8 +176,8 @@ export class ReunionDetailsComponent {
           color: '#24a8f2',
           border: '1px solid #24a8f2',
           width: '100%',
-          title: 'Participant'
-          , value: this.reunion.typeReunion.pourInfo.name
+          title: 'Approbateur'
+          , value: this.docuemantation.typeDocumentation.approbateur
         },
 
         {
@@ -184,8 +185,8 @@ export class ReunionDetailsComponent {
           color: '#ff7eb7',
           border: '1px solid #ff7eb7',
           width: '100%',
-          title: 'Filiale Participant'
-          , value: this.reunion.typeReunion.filialeRealisation
+          title: 'Vérificateur'
+          , value: this.docuemantation.typeDocumentation.verificateurs
         },
 
 
@@ -195,7 +196,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #44e2e3',
           width: '100%',
           title: 'Periodicite',
-          value: this.reunion.typeReunion.periodicite
+          value: this.docuemantation.typeDocumentation.periodicite_revue
         },
 
         {
@@ -204,7 +205,7 @@ export class ReunionDetailsComponent {
           border: '1px solid #5f7dff',
           width: '100%',
           title: 'ID type'
-          , value: this.reunion.typeReunion.idType
+          , value: this.docuemantation.typeDocumentation.accuse_reception
         },
 
         
@@ -225,4 +226,5 @@ export class ReunionDetailsComponent {
 
   ngOnInit() {
   }
+
 }

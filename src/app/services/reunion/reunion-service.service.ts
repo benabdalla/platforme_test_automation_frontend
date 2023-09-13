@@ -34,7 +34,7 @@ export class ReunionServiceService {
     return this.http.delete<Reunion>(this.url + "api/v5/reunion/delete/"+id);
   }
   public getReunion(id: number): Observable<Reunion> {
-    return this.http.get<Reunion>(this.url + "api/v5/reunion/get/" + id);
+    return this.http.get<Reunion>(this.url + "api/v5/reunion/get/reunion/" + id);
   }
 
   public reportReunion(): Observable<ReportModel> {

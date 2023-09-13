@@ -1,0 +1,119 @@
+<mat-toolbar class="toolbar-color py-4 mb-4">
+    <div fxFlex fxLayout fxLayoutAlign="space-around center">
+      <button mat-raised-button (click)="openDialog()"   *ngIf="role">Ajouter scénario spécifique </button>
+      <h1>Liste des  scénario de module  documentation</h1>
+      <button mat-raised-button (click)="openDialog2()"  *ngIf="role">Ajouter scénario génerique</button>
+    </div>
+  
+  </mat-toolbar>
+  <div class="example-header">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+    <div class="example-container mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+  
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>N°.Fiche </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.numFiche}} </mat-cell>
+        </ng-container>
+  
+        <!-- Progress Column -->
+        <ng-container matColumnDef="supperviseur">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Supperviseur </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.typeDocumentation.superviseur?.name !== null">
+              {{row.typeDocumentation.superviseur.name}}
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="filiale.Scenario">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Filiale.Scenario</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.filaileScenario !== null">
+              {{row.filaileScenario}}
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="Approbateur">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Approbateur</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.typeDocumentation.approbateur.name !== null">
+              {{row.typeDocumentation.approbateur.name}}
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="Rédacteur">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Rédacteur </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.typeDocumentation.redacteur.name !== null">
+              {{row.typeDocumentation.redacteur.name}}
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+          <ng-container matColumnDef="Verficateur">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Vérificateur </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <ng-container *ngIf="row.typeDocumentation.verificateurs.name !== null">
+                {{row.typeDocumentation.verificateurs.name}}
+              </ng-container>
+            </mat-cell>
+          </ng-container>
+            <ng-container matColumnDef="Accusé Rcep..">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Accusé Rcépecetion </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <ng-container *ngIf="row.typeDocumentation.accuse_reception.name !== null">
+                    {{row.typeDocumentation.accuse_reception.name}}
+                  </ng-container>
+        
+                </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="...">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
+          <!--  <button mat-raised-button id="idmat-success" (click)="runScenario(row.idScenario)">Exécuter</button>-->
+            <mat-icon  style="overflow:visible;" *ngIf="!isLoading2" (click)="runScenario(row.idScenario)"> play_arrow</mat-icon>
+  
+          <!--  <button mat-raised-button color="accent" (click)="closeScenario(row.idScenario)">Arrêter</button>-->
+  
+            <mat-icon *ngIf="isLoading2" (click)="closeScenario(row.idScenario)" style="overflow:visible;color:rgb(238, 65, 65)" >stop</mat-icon>
+            <div *ngIf="isLoading2" style="display: flex; justify-content: center; align-items: center; background: white;">
+              <mat-progress-spinner style="width: 20px;height: 20px;" color="primary" mode="indeterminate">
+              </mat-progress-spinner>
+            </div>
+          </mat-cell>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="....">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
+            <mat-button-toggle-group #group="matButtonToggleGroup" id="#idButtoneys">
+              <mat-button-toggle value="raw_swift_msg" matTooltip="afficher plus"  (click)="openDialogDetails(row.idScenario)">
+                <i class="fa fa-eye" style="color:#189cda" aria-hidden="true"></i>
+              </mat-button-toggle>
+              <mat-button-toggle value="raw_swift_msg"  *ngIf="!isLoading2 && role" matTooltip="supprimers" (click)="deleteSecenario(row.idScenario)">
+                <i class="fas fa-trash-alt" style="color:#ec4848" aria-hidden="true"></i>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>

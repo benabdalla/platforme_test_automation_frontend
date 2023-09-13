@@ -1,9 +1,103 @@
 <mat-toolbar class="toolbar-color py-4 mb-4">
     <div fxFlex fxLayout fxLayoutAlign="space-around center">
-  <!--    <button mat-raised-button (click)="openDialog()"   *ngIf="role">Ajouter scénario spécifique </button>-->
+      <button mat-raised-button (click)="openDialog()" *ngIf="role">
+        <mat-icon>add-circle</mat-icon>
+        Ajouter scénario spécifique </button>
       <button mat-raised-button (click)="openDialog2()"  *ngIf="role">
         <mat-icon>add-circle</mat-icon>
         Ajouter scénario génerique</button>
     </div>
   
   </mat-toolbar>
+
+  <div class="example-header">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+    <div class="example-container mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+  
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>N°.Fiche </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.numFiche}} </mat-cell>
+        </ng-container>
+  
+        <!-- Progress Column -->
+        <ng-container matColumnDef="Déchlencheur">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Déchlencheur </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.typeReunion.dechlencheur?.name !== null">
+              {{row.typeReunion.dechlencheur.name}}
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="filiale.D">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>filiale.Déchlencheur </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.typeReunion.filialeDeclencheur !== null">
+              {{row.typeReunion.filialeDeclencheur}}
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="Participant">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Participant </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.typeReunion.pourInfo?.name !== null">
+              {{row.typeReunion.pourInfo.name}}
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="filiale.R">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>filiale Participant</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.typeReunion.filialeRealisation !== null">
+              {{row.typeReunion.filialeRealisation}}
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+  
+        
+  
+
+        <ng-container matColumnDef="...">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let row" fxLayout="row" fxLayoutGap="6px">
+            <mat-icon  style="overflow:visible;" *ngIf="!isLoading2" (click)="runScenario(row.idScenario)"> play_arrow</mat-icon>
+            <mat-icon *ngIf="isLoading2" (click)="closeScenario(row.idScenario)" style="overflow:visible;color:rgb(238, 65, 65)" >stop</mat-icon>
+            <div *ngIf="isLoading2" style="display: flex; justify-content: center; align-items: center; background: white;">
+              <mat-progress-spinner style="width: 20px;height: 20px;" color="primary" mode="indeterminate">
+              </mat-progress-spinner>
+            </div>
+      
+             
+  
+              <button mat-fab class="button-class"  style="color:#189cda" matTooltip="afficher plus"  (click)="openDialogDetails(row.idScenario)" aria-label="Example icon button with a delete icon">
+                <mat-icon>visibility</mat-icon>
+              </button>
+             
+              <button class="button-class" mat-fab style="color:#ec4848" *ngIf="!isLoading2 && role" matTooltip="supprimers" (click)="openConfirmationDialog(row.idScenario)" aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+              </button>
+  
+          
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>

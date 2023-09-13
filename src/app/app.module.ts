@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ActionComponent } from './modules/action/action.component';
-import { AuditComponent } from './modules/audit/audit.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './shared/app-material.module';
@@ -49,28 +48,32 @@ import { ReunionSpecComponent } from './modules/reunion/reunion-spec/reunion-spe
 import { ReunionReportComponent } from './modules/reunion/reunion-report/reunion-report.component';
 import { ReunionDetailsComponent } from './modules/reunion/reunion-details/reunion-details.component';
 import { ReunionGenirqueComponent } from './modules/reunion/reunion-genirque/reunion-genirque.component';
+import { DocuemnatationComponent } from './modules/docuemnatation/docuemnatation.component';
+import { AddGenirqueDocComponent } from './modules/docuemnatation/add-genirque-doc/add-genirque-doc.component';
+import { AddSpecDocComponent } from './modules/docuemnatation/add-spec-doc/add-spec-doc.component';
+import { DetailsDocComponent } from './modules/docuemnatation/details-doc/details-doc.component';
+import { ReportDocComponent } from './modules/docuemnatation/report-doc/report-doc.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,DemandeSpecifiqueComponent,
+    AppComponent, DemandeSpecifiqueComponent,
 
-NavbarComponent,Authentification2,
-    ActionComponent,LoginComponent,ActSimplifierDetailsComponent,
-    AuditComponent,
+    NavbarComponent, Authentification2,
+    ActionComponent, LoginComponent, ActSimplifierDetailsComponent,
     AddSecActionComponent,
-    AddactiongenriqueComponent, DetailsSceanarioComponent, ReporatActionComponent, 
-    ActionactionSimplifierComponent,ActSimplifierSepecifiqueComponent,ActSimplifierGeniriqueComponent,ActSimplifierReportComponent,
-     ParametrageComponent,
-     EditPrametrageComponent,SiteComponent, ProcessusComponent, DirectionComponent, ActiviteComponent, 
-     ServiceCompantComponent, AddParametrageComponent, RapportComponent, DemandeAtionComponent, DemandeSpecifiqueComponent, DetailsScenarioComponent, GeneriqueScenarioComponent, ReportScenarioComponent, ReunionComponent, ReunionSpecComponent, ReunionReportComponent, ReunionDetailsComponent, ReunionGenirqueComponent
+    AddactiongenriqueComponent, DetailsSceanarioComponent, ReporatActionComponent,
+    ActionactionSimplifierComponent, ActSimplifierSepecifiqueComponent, ActSimplifierGeniriqueComponent, ActSimplifierReportComponent,
+    ParametrageComponent,
+    EditPrametrageComponent, SiteComponent, ProcessusComponent, DirectionComponent, ActiviteComponent,
+    ServiceCompantComponent, AddParametrageComponent, RapportComponent, DemandeAtionComponent, DemandeSpecifiqueComponent, DetailsScenarioComponent, GeneriqueScenarioComponent, ReportScenarioComponent, ReunionComponent, ReunionSpecComponent, ReunionReportComponent, ReunionDetailsComponent, ReunionGenirqueComponent, DocuemnatationComponent, AddGenirqueDocComponent, AddSpecDocComponent, DetailsDocComponent, ReportDocComponent
 
   ],
-  imports: [MatInputModule,FlexLayoutModule,
+  imports: [MatInputModule, FlexLayoutModule,
     NgFor, NgIf,
     MatSelectModule,
-MatFormFieldModule,
+    MatFormFieldModule,
     BrowserModule, ReactiveFormsModule, FormsModule, MatCardModule,
     AppRoutingModule, AutocompleteLibModule, MatSnackBarModule,
     BrowserAnimationsModule, AppMaterialModule, FlexLayoutModule, MatNativeDateModule, HttpClientModule

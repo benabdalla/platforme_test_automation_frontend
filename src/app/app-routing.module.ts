@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { ActionComponent } from './modules/action/action.component';
-import { AuditComponent } from './modules/audit/audit.component';
 import { ReporatActionComponent } from './modules/action/reporat-action/reporat-action.component';
 import { AddSecActionComponent } from './modules/action/add-sec-action/add-sec-action.component';
 import { ActionactionSimplifierComponent } from './modules/action-simplifier/actionaction-simplifier.component';
@@ -20,6 +19,10 @@ import { DemandeAtionComponent } from './modules/demande-action/demande-ation.co
 import { ReportScenarioComponent } from './modules/demande-action/report-scenario/report-scenario.component';
 import { ReunionComponent } from './modules/reunion/reunion.component';
 import { ReunionReportComponent } from './modules/reunion/reunion-report/reunion-report.component';
+import { ReunionSpecComponent } from './modules/reunion/reunion-spec/reunion-spec.component';
+import { DocuemnatationComponent } from './modules/docuemnatation/docuemnatation.component';
+import { AddGenirqueDocComponent } from './modules/docuemnatation/add-genirque-doc/add-genirque-doc.component';
+import { AddSpecDocComponent } from './modules/docuemnatation/add-spec-doc/add-spec-doc.component';
 
 const routes: Routes = [
   { path: "action", component: ActionComponent, canActivate: [IsSignedInGuard]},
@@ -27,7 +30,7 @@ const routes: Routes = [
   { path: "scsepcifique", component: AddSecActionComponent,canActivate: [IsSignedInGuard] },
   { path: "actSimplifier", component: ActionactionSimplifierComponent,canActivate: [IsSignedInGuard] },
   { path: "scsepcifiqueActSimplifer", component: ActSimplifierSepecifiqueComponent ,canActivate: [IsSignedInGuard]},
-  { path: "reportactionSimplier", component: AuditComponent ,canActivate: [IsSignedInGuard]},
+  { path: "reportactionSimplier", component:  ActSimplifierReportComponent,canActivate: [IsSignedInGuard]},
   { path: "prametrage", component: ParametrageComponent ,canActivate: [IsSignedInGuard]},
   { path: 'home', component: HomeComponent ,canActivate: [IsSignedInGuard]},
   { path: 'report/action/simplifier', component: ActSimplifierReportComponent ,canActivate: [IsSignedInGuard]},
@@ -41,7 +44,11 @@ const routes: Routes = [
   { path: 'demande/action', component: DemandeAtionComponent,canActivate: [IsSignedInGuard]},
   { path: 'report/demande/action', component: ReportScenarioComponent ,canActivate: [IsSignedInGuard]},
   { path: 'reunion', component: ReunionComponent ,canActivate: [IsSignedInGuard]},
-  { path: 'reunion/report', component: ReunionReportComponent ,canActivate: [IsSignedInGuard]}
+  { path: 'reunion/report', component: ReunionReportComponent ,canActivate: [IsSignedInGuard]},
+  { path: 'reunionSpec', component: ReunionSpecComponent ,canActivate: [IsSignedInGuard]},
+  { path: 'docuementation', component: DocuemnatationComponent ,canActivate: [IsSignedInGuard]},
+  { path: 'documentation/report', component: AddGenirqueDocComponent ,canActivate: [IsSignedInGuard]},
+  { path: 'docuementataionSpec', component: AddSpecDocComponent ,canActivate: [IsSignedInGuard]}
   
 ]
 

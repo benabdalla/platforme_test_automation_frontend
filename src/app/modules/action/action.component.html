@@ -1,7 +1,7 @@
 <mat-toolbar class="toolbar-color py-4 mb-4">
   <div fxFlex fxLayout fxLayoutAlign="space-around center">
-    <button mat-raised-button (click)="openDialog()"   *ngIf="role">Ajouter scénario spécifique </button>
-    <button mat-raised-button (click)="openDialog2()"  *ngIf="role">Ajouter scénario génerique</button>
+    <button mat-raised-button (click)="openDialog()"   *ngIf="role">Specific </button>
+    <button mat-raised-button (click)="openDialog2()"  *ngIf="role">Generic</button>
   </div>
 
 </mat-toolbar>
@@ -17,13 +17,13 @@
 
       <!-- ID Column -->
       <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>N°.Fiche </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>N°.Sheet </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.numFiche}} </mat-cell>
       </ng-container>
 
       <!-- Progress Column -->
       <ng-container matColumnDef="Déchlencheur">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Déchlencheur </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Release </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <ng-container *ngIf="row.dechlencheur?.name !== null">
             {{row.dechlencheur.name}}
@@ -32,7 +32,7 @@
       </ng-container>
 
       <ng-container matColumnDef="filiale.D">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>filiale.D </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>filiale.R </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <ng-container *ngIf="row.filialeDeclencheur !== null">
             {{row.filialeDeclencheur}}
@@ -42,7 +42,7 @@
 
 
       <ng-container matColumnDef="Responsable traitement">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Responsable traitement </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Responsable manager </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <ng-container *ngIf="row.respTraitement?.name !== null">
             {{row.respTraitement.name}}
@@ -51,7 +51,7 @@
       </ng-container>
 
       <ng-container matColumnDef="filiale.R">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>filiale.R</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>filiale.M</mat-header-cell>
         <mat-cell *matCellDef="let row">
           <ng-container *ngIf="row.filialeRealisation !== null">
             {{row.filialeRealisation}}
@@ -60,7 +60,7 @@
       </ng-container>
 
       <ng-container matColumnDef="Responsable Côlture">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Responsable Côlture </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Côlture Manager </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <ng-container *ngIf="row.respCloture?.name !== null">
             {{row.respCloture.name}}

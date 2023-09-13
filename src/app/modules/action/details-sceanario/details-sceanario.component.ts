@@ -22,9 +22,9 @@ export class DetailsSceanarioComponent {
       console.log(res) 
       console.log(this.action)
       if(this.action?.etat===1){
-        this.typeScenrio="Spécifique"
+        this.typeScenrio="Specific"
       }else{
-        this.typeScenrio="Génirique"
+        this.typeScenrio="Generic"
       }
 
       this.items = [
@@ -33,7 +33,7 @@ export class DetailsSceanarioComponent {
           color: '#5f7dff',
           border: '1px solid #5f7dff',
           width: '100%',
-          title: 'N°fiche',
+          title: 'N°Sheeet',
           value: this.action.numFiche
         },
         {
@@ -60,7 +60,7 @@ export class DetailsSceanarioComponent {
           color: '#24a8f2',
           border: '1px solid #24a8f2',
           width: '100%',
-          title: 'Priorite'
+          title: 'Priority'
           , value: this.action.priorite
         },
 
@@ -69,7 +69,7 @@ export class DetailsSceanarioComponent {
           color: '#ff7eb7',
           border: '1px solid #ff7eb7',
           width: '100%',
-          title: 'Gravite'
+          title: 'Gravity'
           , value: this.action.gravite
         },
 
@@ -79,7 +79,7 @@ export class DetailsSceanarioComponent {
           color: '#44e2e3',
           border: '1px solid #44e2e3',
           width: '100%',
-          title: 'Type de cause',
+          title: 'Type of cause',
           value: this.action.typeCause
         },
 
@@ -88,7 +88,7 @@ export class DetailsSceanarioComponent {
           color: '#5f7dff',
           border: '1px solid #5f7dff',
           width: '100%',
-          title: 'Désignation'
+          title: 'Designation'
           , value: this.action.designation
         },
 
@@ -155,7 +155,7 @@ export class DetailsSceanarioComponent {
           color: '#00ce86',
           border: '1px solid #00ce86',
           width: '100%',
-          title: 'Désagniation Sous Action',
+          title: 'Desagniation Under Action',
           value: this.action.desiSA
         },
 
@@ -165,7 +165,7 @@ export class DetailsSceanarioComponent {
           color: '#ec4b53',
           border: '1px solid #ec4b53',
           width: '100%',
-          title: 'Date de réalisation',
+          title: 'Completion date',
           value: this.action.dateRealisation
         },
 
@@ -174,7 +174,7 @@ export class DetailsSceanarioComponent {
           color: '#24a8f2',
           border: '1px solid #24a8f2',
           width: '100%',
-          title: 'Taux réalisation'
+          title: 'Completion rate'
           , value: this.action.tauxRealisation
         },
 
@@ -183,7 +183,7 @@ export class DetailsSceanarioComponent {
           color: '#ff7eb7',
           border: '1px solid #ff7eb7',
           width: '100%',
-          title: 'Date suivi'
+          title: 'Follow-up date'
           , value: this.action.dateSuivi
         },
 
@@ -193,7 +193,7 @@ export class DetailsSceanarioComponent {
           color: '#44e2e3',
           border: '1px solid #44e2e3',
           width: '100%',
-          title: 'Taux de suivi',
+          title: 'Follow-up rate',
           value: this.action.tauxSuivi
         },
 
@@ -202,7 +202,7 @@ export class DetailsSceanarioComponent {
           color: '#5f7dff',
           border: '1px solid #5f7dff',
           width: '100%',
-          title: 'Date création'
+          title: 'Creation date'
           , value: this.action.dateCreation
         },
 
@@ -211,7 +211,7 @@ export class DetailsSceanarioComponent {
           color: '#00ce86',
           border: '1px solid #00ce86',
           width: '100%',
-          title: 'Produit',
+          title: 'Product',
         value: this.action.produit },
 
         {
@@ -219,7 +219,7 @@ export class DetailsSceanarioComponent {
           color: '#ec4b53',
           border: '1px solid #ec4b53',
           width: '100%',
-          title: 'Type scénario',
+          title: 'Scenario type',
         value: this.typeScenrio
         },
 
@@ -231,7 +231,7 @@ export class DetailsSceanarioComponent {
           color: '#24a8f2',
           border: '1px solid #24a8f2',
           width: '100%',
-          title: 'Déchlencheur',
+          title: 'Release',
           value: this.action.dechlencheur.name
         },
 
@@ -241,7 +241,7 @@ export class DetailsSceanarioComponent {
           color: '#ff7eb7',
           border: '1px solid #ff7eb7',
           width: '100%',
-          title: 'Resp.traitement'
+          title: 'Resp.manager'
           , value: this.action.respTraitement.name        },
 
 
@@ -251,7 +251,7 @@ export class DetailsSceanarioComponent {
           color: '#44e2e3',
           border: '1px solid #44e2e3',
           width: '100%',
-          title: 'Responsable Clôture',
+          title: 'Closing Manager',
           value: this.action.respCloture.name,
         },
         
@@ -260,7 +260,7 @@ export class DetailsSceanarioComponent {
           color: '#44e2e3',
           border: '1px solid #44e2e3',
           width: '100%',
-          title: 'Responsable de suivi',
+          title: 'Follow-up manager',
           value: this.action.respSuivi.name,
         },
 

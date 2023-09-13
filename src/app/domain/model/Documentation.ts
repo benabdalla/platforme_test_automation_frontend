@@ -3,23 +3,21 @@ import { Direction } from "./Direction";
 import { Processus } from "./Processus";
 import { Site } from "./Site";
 import { TabService } from "./TabService";
+import { TypeDocuemntation } from "./TypeDocuemntation";
 import { TypeReunion } from "./TypeReunion";
-export class Reunion {
+export class Documentation {
     idScenario!:number;
     numFiche!: number
     etat!:number;
-     datePrevue !:string;
-      lieu!:string;
-      type !:string;
-      orderJour!:string;
+    Libelle !:string;
+  filaileScenario!:string;
      site!: Site;
      processus!: Processus
      activite!: Activite
      direction!: Direction
      service!: TabService
-     typeReunion!:TypeReunion;
-
-
+     typeDocumentation!:TypeDocuemntation;
+     
 
 
 

@@ -1,29 +1,28 @@
 import { Component } from '@angular/core';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { ReunionServiceService } from 'src/app/services/reunion/reunion-service.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DocumentationServiceService } from 'src/app/services/documenatation/documentation-service.service';
 import { Url } from 'src/app/shared/ConfigUrl';
 
 @Component({
-  selector: 'app-reunion-report',
-  templateUrl: './reunion-report.component.html',
-  styleUrls: ['./reunion-report.component.css']
+  selector: 'app-report-doc',
+  templateUrl: './report-doc.component.html',
+  styleUrls: ['./report-doc.component.css']
 })
-export class ReunionReportComponent {
-
+export class ReportDocComponent {
 
   private url = Url.URL;
   urlFrame?: string;
   safeReportUrl?: SafeResourceUrl;
   errorShow:boolean=false;
 
-  constructor(private reunionService:ReunionServiceService,private sanitizer: DomSanitizer ) {
+  constructor(private documentationService:DocumentationServiceService,private sanitizer: DomSanitizer ) {
 console.log(this.url);
 this.report();
    }
   
 
    report():void {
-      this.reunionService.reportReunion().subscribe(res=>{
+      this.documentationService.reportDocumentation().subscribe(res=>{
         console.log(res)
         if(res.srcFrame=="404"||res==undefined || res==null){
           this.errorShow=true
@@ -41,7 +40,5 @@ console.log(this.urlFrame);
 
 
     }
-
+  
   }
- 
- 

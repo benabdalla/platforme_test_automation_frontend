@@ -1,0 +1,323 @@
+
+<div>
+    <div class="add-title">
+      <mat-toolbar class="toolbar-color py-4 mb-4">
+        <div fxFlex fxLayout fxLayoutAlign="space-around center">
+          <h1>Scénario  Reunion  sépecifique</h1>
+        </div>
+  
+  
+      </mat-toolbar>
+    </div>
+    <div>
+  
+  <div class="container">
+      
+    <form [formGroup]="addCusForm" (change)="formChanged()">
+  <mat-tab-group>
+    <mat-tab label="Reunion" class="custom-tab">
+      
+    
+  
+  
+        <mat-card class="custom-card">
+  
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex="35" class="action-blurb">
+                    <div class="text-inside">
+                      <mat-form-field class="small-form-field">
+                        <input matInput placeholder="Order de jour" formControlName="designation" required>
+        
+                        <mat-error *ngIf="addCusForm.controls.designation.hasError('required')">
+                          Champ obligatoire
+                        </mat-error>
+        
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div fxFlex="35" class="action-blurb">
+                    <div class="text-inside">
+                      <mat-form-field class="small-form-field">
+                        <input matInput placeholder="Lieu" formControlName="description" required>
+        
+                        <mat-error *ngIf="addCusForm.controls.description.hasError('required')">
+                          Champ obligatoire
+                        </mat-error>
+        
+                      </mat-form-field>
+                    </div>
+                  </div>
+               
+               
+                <div fxFlex="30" class="action-blurb">
+                  <div class="text-inside">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker3" placeholder="Date creation" formControlName="date_création">
+                      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                      <mat-datepicker #picker3></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+          
+                
+              </div>
+         
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <div fxFlex="35" class="action-blurb">
+              <mat-form-field>
+                <mat-label>ACTIVITE</mat-label>
+                <mat-select formControlName="activite">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let f of activite" [value]="f">
+                    {{f.activite}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="addCusForm.hasError('required')">Veuillez choisir un activite</mat-error>
+                <mat-hint>{{addCusForm.value?.activite}}</mat-hint>
+              </mat-form-field>
+            </div>
+            <div fxFlex="35" class="action-blurb">
+              <mat-form-field>
+                <mat-label>SERVICE</mat-label>
+                <mat-select formControlName="service">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let f of tabservice" [value]="f">
+                    {{f.service}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="addCusForm.hasError('required')">Veuillez choisir un SERVICE</mat-error>
+                <mat-hint>{{addCusForm.value?.service}}</mat-hint>
+              </mat-form-field>
+            </div>
+         
+            <div fxFlex="30" class="action-blurb">
+                <mat-form-field>
+                  <mat-label>Direction</mat-label>
+                  <mat-select formControlName="direction" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let f of direction" [value]="f">
+                      {{f.direction}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="addCusForm.hasError('required')">Veuillez choisir un direction</mat-error>
+                  <mat-hint>{{addCusForm.value?.direction}}</mat-hint>
+                </mat-form-field>
+              </div>
+          </div>
+     
+
+          <div fxLayout="row" fxLayoutAlign="start-center">
+            <mat-card class="custom-card">
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+      
+      
+                  <strong>Site :</strong>
+      
+                  <ng-autocomplete [data]="site" [searchKeyword]="siteName" placeholder="Site"
+                    historyIdentifier="siteliste1" [itemTemplate]="itemTemplate7" [notFoundTemplate]="notFoundTemplate"
+                    formControlName="siteList">
+                  </ng-autocomplete>
+      
+                  <ng-template #itemTemplate7 let-item>
+                    <div class="item">
+                      <Strong [innerHTML]="item.site"></Strong> &nbsp; | &nbsp;
+                      <em>N°: {{item.idSite}}</em>
+      
+                    </div>
+                  </ng-template>
+                </div>
+                <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+      
+                  <strong>Processus :</strong>
+      
+                  <div class="">
+                    <ng-autocomplete [data]="processus" [searchKeyword]="processusName" placeholder="Processus"
+                      historyIdentifier="processusList1" [itemTemplate]="itemTemplate6"
+                      [notFoundTemplate]="notFoundTemplate" formControlName="processusList">
+                    </ng-autocomplete>
+      
+                    <ng-template #itemTemplate6 let-item>
+                      <div class="item">
+                        <Strong [innerHTML]="item.processus"></Strong> &nbsp; | &nbsp;
+                        <em>N° : {{item.idProcessus}}</em>
+      
+                      </div>
+                    </ng-template>
+      
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          
+        </div>
+
+
+        </mat-card>
+    
+    </mat-tab>
+    <mat-tab label="Type Réunion"> 
+      
+  
+      <div fxLayout="row" fxLayoutAlign="center center">
+  
+        <div fxFlex="50" class="action-blurb">
+  
+          <mat-card class="custom-card">
+  
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+                <strong>Déchlencheur :</strong>
+                <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Déchlencheur"
+                  historyIdentifier="employees1" [itemTemplate]="itemTemplate2" [notFoundTemplate]="notFoundTemplate"
+                  formControlName="declencheur">
+                </ng-autocomplete>
+  
+                <ng-template #itemTemplate2 let-item>
+                  <div class="item">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                      height="35">
+                    <strong [innerHTML]="item.name"></strong> &nbsp; | &nbsp;
+                    <em>matriculer : {{item.idUser}}</em>
+  
+                  </div>
+                </ng-template>
+              </div>
+  
+  
+              <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+  
+                <mat-form-field>
+                  <mat-label>Filiale</mat-label>
+                  <mat-select formControlName="fgDeclencheur" required [(ngModel)]="selectedOption"
+                    (ngModelChange)="disaibledProd()">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let f of fg" [value]="f">
+                      {{f.name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="addCusForm.hasError('required')">Veuillez choisir un filiale</mat-error>
+                  <mat-hint>{{addCusForm.value?.name}}</mat-hint>
+                </mat-form-field>
+  
+  
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div fxFlex="50" class="action-blurb">
+          <mat-card class="custom-card">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+                <strong>Responsable de réalisation :</strong>
+  
+                <div class="">
+                  <ng-autocomplete [data]="employees" [searchKeyword]="keyword"
+                    placeholder="Responsable de réalisation" historyIdentifier="employees2"
+                    [itemTemplate]="itemTemplate3" [notFoundTemplate]="notFoundTemplate" formControlName="respoReal">
+                  </ng-autocomplete>
+  
+                  <ng-template #itemTemplate3 let-item>
+                    <div class="item">
+                      <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                        height="35">
+                      <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                      <em>matriculer : {{item.idUser}}</em>
+  
+                    </div>
+                  </ng-template>
+  
+  
+  
+                </div>
+              </div>
+  
+  
+              <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+  
+                <mat-form-field>
+                  <mat-label>Filiale</mat-label>
+                  <mat-select formControlName="fgRespReal" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let f of fg" [value]="f">
+                      {{f.name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="addCusForm.hasError('required')">Veuillez choisir un filiale</mat-error>
+                  <mat-hint>{{addCusForm.value?.name}}</mat-hint>
+                </mat-form-field>
+  
+              </div>
+            </div>
+  
+          </mat-card>
+        </div>
+      </div>
+   
+  
+
+
+        <div fxLayout="row" fxLayoutAlign="start-center">
+  
+            <div fxFlex="50" class="action-blurb">
+      
+              <mat-card class="custom-card">
+        <div fxFlex="50" class="action-blurb">
+          <div class="text-inside">
+            <mat-form-field class="small-form-field">
+              <input matInput placeholder="source d'action" formControlName="source" required>
+
+              <mat-error *ngIf="addCusForm.controls.source.hasError('required')">
+                Champ obligatoire
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </div>
+      
+        <div fxFlex="50" class="action-blurb">
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Taux de suivi" formControlName="taux_suivi" required type="number">
+                <mat-error *ngIf="addCusForm.controls.taux_suivi.hasError('required')">
+                  Champ obligatoire
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+              </mat-card>
+              </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+  
+        <div fxFlex="50" class="action-blurb" fxFlexOffset="20">
+  
+          <!--      -->
+          <button mat-raised-button type="submit" color="primary" class="Update-btn"  [disabled]="addCusForm.invalid"
+            (click)="onAddScenario()">
+            <mat-icon>add</mat-icon>
+            add
+          </button>
+        </div>
+  
+        <div fxFlex="50" class="action-blurb" fxFlexOffset="20">
+          <button mat-raised-button type="button" color="warn" class="Discard-btn" (click)="viderFroms()">
+            <mat-icon>cancel</mat-icon>
+            Cancel</button>
+        </div>
+      </div>
+   </mat-tab>
+  </mat-tab-group>
+  
+    </form>
+  
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </div>
+  
+  

@@ -3,7 +3,7 @@
     <mat-icon *ngIf="!sidenav.opened && isLoggedIn"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened  && isLoggedIn"> close </mat-icon>
   </button>
-  Platforme de test automatisé
+  Automated testing platform
   <div class="spacer"></div>
   <button mat-button class="menu-button" style="color: white;" class="nav-link" *ngIf="isLoggedIn && admin"
     routerLink="/user">
@@ -61,43 +61,43 @@
 
         <button mat-button class="menu-button">
           <mat-icon>settings</mat-icon>
-          <span>Parametrage</span>
+          <span>Settings</span>
         </button>
       </mat-expansion-panel-header>
       <mat-nav-list>
         <mat-list-item>
           <button mat-button class="menu-button" routerLink="/prametrage">
-            <mat-icon>settings</mat-icon><span>Parametrage</span>
+            <mat-icon>settings</mat-icon><span>Settings</span>
           </button>
 
         </mat-list-item>
 
         <mat-list-item>
           <button mat-button class="menu-button" (click)="onClickNavigate('site')">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Site</span>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Site report</span>
           </button>
 
         </mat-list-item>
         <mat-list-item>
           <button mat-button class="menu-button" (click)="onClickNavigate('processus')">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Processus</span> </button>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Process Report</span> </button>
 
         </mat-list-item>
         <mat-list-item>
           <button mat-button class="menu-button" (click)="onClickNavigate('activite')">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Activite</span>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Activity Report</span>
           </button>
 
         </mat-list-item>
         <mat-list-item>
           <button mat-button class="menu-button" (click)="onClickNavigate('direction')">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Direction</span>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Direction report </span>
           </button>
 
         </mat-list-item>
         <mat-list-item>
           <button mat-button class="menu-button" (click)="onClickNavigate('service')">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Service</span>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Service report</span>
           </button>
 
         </mat-list-item>
@@ -120,21 +120,21 @@
 
         <button mat-button class="menu-button">
           <mat-icon>dns</mat-icon>
-          <span>Action Details</span>
+          <span>Action details</span>
         </button>
       </mat-expansion-panel-header>
       <mat-nav-list>
         <mat-list-item>
           <button mat-button class="menu-button" routerLink="/action">
             <mat-icon>dns</mat-icon>
-            <span>Action Details</span>
+            <span>Action details</span>
           </button>
 
         </mat-list-item>
 
         <mat-list-item>
           <button mat-button class="menu-button" routerLink="/reportaction">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport action details</span>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Report Action details</span>
           </button>
 
         </mat-list-item>
@@ -155,21 +155,21 @@
 
         <button mat-button class="menu-button">
           <mat-icon>dns</mat-icon>
-          <span>Action Simplifier</span>
+          <span>Action Simplify</span>
         </button>
       </mat-expansion-panel-header>
       <mat-nav-list>
         <mat-list-item>
           <button mat-button class="menu-button" routerLink="/actSimplifier">
             <mat-icon>dns</mat-icon>
-            <span>Action Simplifier</span>
+            <span>Action Simplify</span>
           </button>
 
         </mat-list-item>
 
         <mat-list-item>
           <button mat-button class="menu-button" routerLink="/report/action/simplifier">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Action Simplifier</span>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Report Action Simplify</span>
           </button>
 
         </mat-list-item>
@@ -182,21 +182,21 @@
 
         <button mat-button class="menu-button">
           <mat-icon>dns</mat-icon>
-          <span>Demande Action </span>
+          <span>Action request </span>
         </button>
       </mat-expansion-panel-header>
       <mat-nav-list>
         <mat-list-item>
           <button mat-button class="menu-button" routerLink="/demande/action">
             <mat-icon>dns</mat-icon>
-            <span>Demande Action</span>
+            <span>Action request</span>
           </button>
 
         </mat-list-item>
 
         <mat-list-item>
           <button mat-button class="menu-button" routerLink="/report/demande/action">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Rapport Demande Action</span>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Report Action request</span>
           </button>
 
         </mat-list-item>
@@ -223,7 +223,7 @@
 
         <mat-list-item>
           <button mat-button class="menu-button" routerLink="reunion/report">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Meeting report</span>
+            <mat-icon>chrome_reader_mode</mat-icon><span>Report reunion</span>
           </button>
 
         </mat-list-item>
@@ -241,21 +241,21 @@
 
         <button mat-button class="menu-button">
           <mat-icon> bar_chart</mat-icon>
-          <span>Indicateur </span>
+          <span>Documenatation</span>
         </button>
       </mat-expansion-panel-header>
       <mat-nav-list>
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/demande/action">
+          <button mat-button class="menu-button" routerLink="docuementation">
             <mat-icon> bar_chart</mat-icon>
-            <span>Indicateur</span>
+            <span>Documenatation</span>
           </button>
 
         </mat-list-item>
 
         <mat-list-item>
-          <button mat-button class="menu-button" routerLink="/report/demande/action">
-            <mat-icon>chrome_reader_mode</mat-icon><span>Indicateurs</span>
+          <button mat-button class="menu-button" routerLink="documentation/report">
+            <mat-icon>chrome_reader_mode</mat-icon><span>Report Documenatation</span>
           </button>
 
         </mat-list-item>

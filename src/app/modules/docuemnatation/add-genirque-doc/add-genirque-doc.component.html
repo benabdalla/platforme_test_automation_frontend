@@ -1,0 +1,266 @@
+<div>
+    <div class="add-title">
+        <mat-toolbar color="primary">
+            <!-- Title in the center -->
+            <span class="toolbar-title">Scenrio génerique docuementation</span>
+
+            <!-- Spacer to push the close icon to the right -->
+            <span class="spacer"></span>
+
+            <!-- Close icon -->
+            <button mat-icon-button (click)="fermerPopup()" style="background-color: rgb(245, 52, 52);">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar>
+
+    </div>
+    <div>
+
+        <form [formGroup]="fromScGenrique" (change)="formChanged()" class="line">
+
+            <mat-card class="custom-card">
+
+                <div fxLayout="row" ffxLayoutAlign="center center">
+
+
+
+                    <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+                        <strong> Superviseur :</strong>
+                        <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                        </ng-template>
+
+                        <div class="ng-autocomplete">
+                            <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Superviseur"
+                                historyIdentifier="employees1" [itemTemplate]="itemTemplate2"
+                                [notFoundTemplate]="notFoundTemplate" formControlName="superviseur">
+                            </ng-autocomplete>
+
+                            <ng-template #itemTemplate2 let-item>
+                                <div class="item">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                                        height="35">
+                                    <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                                    <em>matriculer : {{item.idUser}}</em>
+
+                                </div>
+                            </ng-template>
+
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                    </div>
+
+
+                    <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+                        <mat-form-field>
+                            <mat-label>Filiale Scenario</mat-label>
+                            <mat-select formControlName="fgScenario" required>
+                                <mat-option>--</mat-option>
+                                <mat-option *ngFor="let f of fg" [value]="f">
+                                    {{f.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
+                            <mat-hint>{{fgControl.value?.name}}</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row" ffxLayoutAlign="center center">
+
+
+                    <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+                        <strong>Rédacteur :</strong>
+                        <div class="text-inside">
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                        <div class="ng-autocomplete ">
+                            <ng-autocomplete [data]="employees" [searchKeyword]="keyword"
+                                placeholder="Rédacteur" historyIdentifier="employees2"
+                                [itemTemplate]="itemTemplate3" [notFoundTemplate]="notFoundTemplate"
+                                formControlName="redacteur">
+                            </ng-autocomplete>
+
+                            <ng-template #itemTemplate3 let-item>
+                                <div class="item">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                                        height="35">
+                                    <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                                    <em>matriculer : {{item.idUser}}</em>
+
+                                </div>
+                            </ng-template>
+
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                    </div>
+
+                    <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+                        <strong>Vérificateurs :</strong>
+                        <div class="text-inside">
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                        <div class="ng-autocomplete ">
+                            <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Vérificateurs"
+                                historyIdentifier="employees4" [itemTemplate]="itemTemplate5"
+                                [notFoundTemplate]="notFoundTemplate" formControlName="verificateurs">
+                            </ng-autocomplete>
+
+                            <ng-template #itemTemplate5 let-item>
+                                <div class="item">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                                        height="35">
+                                    <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                                    <em>matriculer : {{item.idUser}}</em>
+
+                                </div>
+                            </ng-template>
+
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                    </div>
+
+                </div>
+                <div fxLayout="row" ffxLayoutAlign="center center">
+                    <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+                    <strong>Approbateur :</strong>
+                    <div class="text-inside">
+                        <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                    </div>
+                    <div class="ng-autocomplete ">
+                        <ng-autocomplete [data]="employees" [searchKeyword]="keyword"
+                            placeholder="Approbateur" historyIdentifier="approbateur"
+                            [itemTemplate]="itemTemplate33" [notFoundTemplate]="notFoundTemplate"
+                            formControlName="approbateur">
+                        </ng-autocomplete>
+
+                        <ng-template #itemTemplate33 let-item>
+                            <div class="item">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                                    height="35">
+                                <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                                <em>matriculer : {{item.idUser}}</em>
+
+                            </div>
+                        </ng-template>
+
+                        <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                    </div>
+                </div>
+              
+
+
+
+                    <div fxFlex="50" class="action-blurb" fxFlexOffset="5">
+
+
+                        <strong>Accusé de recepetion :</strong>
+                        <div class="text-inside">
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                        <div class="ng-autocomplete ">
+                            <ng-autocomplete [data]="employees" [searchKeyword]="keyword"
+                                placeholder="Accusé récepection" historyIdentifier="accuse_reception"
+                                [itemTemplate]="itemTemplate335" [notFoundTemplate]="notFoundTemplate"
+                                formControlName="accuse_reception">
+                            </ng-autocomplete>
+    
+                            <ng-template #itemTemplate335 let-item>
+                                <div class="item">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                                        height="35">
+                                    <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                                    <em>matriculer : {{item.idUser}}</em>
+    
+                                </div>
+                            </ng-template>
+    
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+                
+          <div fxLayout="row" ffxLayoutAlign="center center">
+  
+  
+  
+            <div fxFlex="50"  class="action-blurb" fxFlexOffset="5">
+              <strong> Responsable Diffusion :</strong>
+              <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+    
+              <div class="ng-autocomplete">
+                <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Responsable Diffusion"
+                  historyIdentifier="employees12" [itemTemplate]="itemTemplate12" [notFoundTemplate]="notFoundTemplate"
+                  formControlName="responsables_gestion_diffusion">
+                </ng-autocomplete>
+    
+                <ng-template #itemTemplate12 let-item>
+                  <div class="item">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
+                      height="35">
+                    <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
+                    <em>matriculer : {{item.idUser}}</em>
+    
+                  </div>
+                </ng-template>
+    
+                <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+
+
+            </mat-card>
+
+
+
+
+
+            <div class="btn-sec" fxLayoutAlign="space-around center" fxFlex="calc(50% - 80px)" class="m-1 pt-3">
+
+                <button mat-raised-button type="submit" color="primary" class="Update-btn"
+                    [disabled]="fromScGenrique.invalid" (click)="onAddScenario()">
+                    <mat-icon>add-box</mat-icon>
+                    Add Scenario
+                </button>
+
+                <!---->
+
+                <button mat-raised-button mat-dialog-close type="button" color="warn" class="Discard-btn">
+                    <mat-icon>cancel</mat-icon>
+                    Cancel</button>
+
+
+            </div>
+
+        </form>
+
+
+
+
+
+    </div>
+</div>

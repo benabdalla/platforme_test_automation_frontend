@@ -2,7 +2,7 @@
   <div class="add-title">
     <mat-toolbar class="toolbar-color py-4 mb-4">
       <div fxFlex fxLayout fxLayoutAlign="space-around center">
-        <h3>Scénario module Action</h3>
+        <h3>Scenario module Action</h3>
       </div>
 
     </mat-toolbar>
@@ -18,7 +18,7 @@
 
 
           <div fxFlex="70"  class="action-blurb" fxFlexOffset="5">
-            <strong> Déchlencheur :</strong>
+            <strong> Release :</strong>
             <ng-template #notFoundTemplate let-notFound>
               <div [innerHTML]="notFound"></div>
             </ng-template>
@@ -35,7 +35,7 @@
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
                     height="35">
                   <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
-                  <em>matriculer : {{item.idUser}}</em>
+                  <em>Identity : {{item.idUser}}</em>
   
                 </div>
               </ng-template>
@@ -56,7 +56,7 @@
                 {{f.name}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
+            <mat-error *ngIf="fgControl.hasError('required')">Please choose one filiale</mat-error>
             <mat-hint>{{fgControl.value?.name}}</mat-hint>
           </mat-form-field>
         </div>
@@ -66,7 +66,7 @@
 
 
           <div fxFlex="70"  class="action-blurb" fxFlexOffset="5">
-            <strong>Responsable de réalisation :</strong>
+            <strong>Responsible for production :</strong>
             <div class="text-inside">
               <ng-template #notFoundTemplate let-notFound>
                 <div [innerHTML]="notFound"></div>
@@ -84,7 +84,7 @@
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
                     height="35">
                   <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
-                  <em>matriculer : {{item.idUser}}</em>
+                  <em>Identity : {{item.idUser}}</em>
   
                 </div>
               </ng-template>
@@ -104,7 +104,7 @@
                     {{f.name}}
                   </mat-option>
                 </mat-select>
-                <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
+                <mat-error *ngIf="fgControl.hasError('required')">Please choose one filiale</mat-error>
                 <mat-hint>{{fgControl.value?.name}}</mat-hint>
               </mat-form-field>
               </div>
@@ -116,7 +116,7 @@
 
 
                 <div fxFlex="70"  class="action-blurb" fxFlexOffset="5">
-                  <strong>Responsable de suivi :</strong>
+                  <strong>Follow-up manager :</strong>
                   <div class="text-inside">
                     <ng-template #notFoundTemplate let-notFound>
                       <div [innerHTML]="notFound"></div>
@@ -134,7 +134,7 @@
                           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
                           height="35">
                         <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
-                        <em>matriculer : {{item.idUser}}</em>
+                        <em>Identity : {{item.idUser}}</em>
         
                       </div>
                     </ng-template>
@@ -156,7 +156,7 @@
                           {{f.name}}
                         </mat-option>
                       </mat-select>
-                      <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
+                      <mat-error *ngIf="fgControl.hasError('required')">Please choose one filiale</mat-error>
                       <mat-hint>{{fgControl.value?.name}}</mat-hint>
                     </mat-form-field>
                     </div>
@@ -167,7 +167,7 @@
 
 
                   <div fxFlex="70"  class="action-blurb" fxFlexOffset="5">
-                        <strong>Responsable de clôture :</strong>
+                        <strong>Closing manager :</strong>
                         <div class="text-inside">
                           <ng-template #notFoundTemplate let-notFound>
                             <div [innerHTML]="notFound"></div>
@@ -185,7 +185,7 @@
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU31QN0p6cf7IRzPMzDSx78u74VaAkHJDzxQ&usqp=CAU"
                                 height="35">
                               <Strong [innerHTML]="item.name"></Strong> &nbsp; | &nbsp;
-                              <em>matriculer : {{item.idUser}}</em>
+                              <em>Identity: {{item.idUser}}</em>
               
                             </div>
                           </ng-template>
@@ -208,7 +208,7 @@
                                 {{f.name}}
                               </mat-option>
                             </mat-select>
-                            <mat-error *ngIf="fgControl.hasError('required')">Veuillez choisir un filiale</mat-error>
+                            <mat-error *ngIf="fgControl.hasError('required')">Please choose one filiale</mat-error>
                             <mat-hint>{{fgControl.value?.name}}</mat-hint>
                           </mat-form-field>
                           </div>
@@ -233,7 +233,7 @@
                                 <ng-template #itemTemplate7 let-item>
                                   <div class="item">
                                     <Strong [innerHTML]="item.site"></Strong> &nbsp; | &nbsp;
-                                    <em>Numéro : {{item.idSite}}</em>
+                                    <em>Number : {{item.idSite}}</em>
                     
                                   </div>
                                 </ng-template>
@@ -266,7 +266,7 @@
                                   <ng-template #itemTemplate6 let-item>
                                     <div class="item">
                                       <Strong [innerHTML]="item.processus"></Strong> &nbsp; | &nbsp;
-                                      <em>Numéro : {{item.idProcessus}}</em>
+                                      <em>Number : {{item.idProcessus}}</em>
                       
                                     </div>
                                   </ng-template>
@@ -290,15 +290,16 @@
         <div class="btn-sec" fxLayoutAlign="space-around center" fxFlex="calc(50% - 80px)" class="m-1 pt-3">
 
           <button mat-raised-button type="submit"  color="primary" class="Update-btn" [disabled]="fromScGenrique.invalid" (click)="onAddScenario()">
-            <mat-icon>add</mat-icon>
-            Ajouter
+            <mat-icon>add-circle</mat-icon>
+            Add
           </button>
 
 <!---->
 
           <button mat-raised-button mat-dialog-close type="button" color="warn" class="Discard-btn">
             <mat-icon>cancel</mat-icon>
-            Annuler</button>
+            Cancel
+            </button>
 
 
         </div>
